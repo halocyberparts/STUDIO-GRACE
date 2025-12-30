@@ -309,26 +309,73 @@
 </section>
 
 <!-- GALLERY -->
-<section id="gallery" class="gallery-section">
-  <div class="gallery">
-    <figure class="piece">
-      <img src="./Images/background_black_coins.png">
-      <figcaption>Corduroy Jacket — One of one</figcaption>
-    </figure>
-    <figure class="piece">
-      <img src="./Images/My Custom.png">
-      <figcaption>Denim Jacket — One of one</figcaption>
-    </figure>
-    <figure class="piece">
-      <img src="./Images/Logo.png">
-      <figcaption>Narrative Piece</figcaption>
-    </figure>
-    <figure class="piece">
-      <img src="./Images/Blue_Sweater.png">
-      <figcaption>Collector Favorite</figcaption>
-    </figure>
-  </div>
-</section>
+/* ================= GALLERY SLIDER ================= */
+
+.gallery-section {
+  position: relative;
+  padding: 4rem 3rem;
+  background: #000;
+}
+
+.gallery-viewport {
+  overflow: hidden;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.gallery-track {
+  display: flex;
+  gap: 2rem;
+  transition: transform 0.6s ease;
+}
+
+.piece {
+  flex: 0 0 calc(25% - 1.5rem);
+  position: relative;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.15);
+  box-shadow: 0 8px 32px rgba(0,0,0,.4);
+}
+
+.piece img {
+  width: 100%;
+  display: block;
+}
+
+.piece figcaption {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 1rem;
+  background: linear-gradient(to top, rgba(0,0,0,.7), transparent);
+  opacity: 0;
+  transition: .3s ease;
+  text-align: center;
+}
+
+.piece:hover figcaption {
+  opacity: 1;
+}
+
+/* arrows */
+.gallery-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255,255,255,0.9);
+  color: #000;
+  border: none;
+  font-size: 2.2rem;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.gallery-arrow.left { left: 1rem; }
+.gallery-arrow.right { right: 1rem; }
 
 <section id="about" class="about">
   <p>Studio Grace is an independent atelier where each garment is treated as a singular work.</p>
