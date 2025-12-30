@@ -2,6 +2,170 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Studio Grace — One-of-One Garments</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* RESET */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: "Inter", sans-serif;
+      background: #000;
+      color: #f5f4f2;
+      line-height: 1.6;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* HEADER */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 1rem 2rem;
+      background: transparent;
+    }
+
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0.7rem 1.4rem;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      border-radius: 14px;
+
+      /* Levi’s denim lining */
+      background: linear-gradient(
+        180deg,
+        rgba(32, 52, 92, 0.92),
+        rgba(22, 38, 70, 0.92)
+      );
+
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.06),
+        0 10px 30px rgba(0,0,0,0.5);
+
+      backdrop-filter: blur(6px);
+    }
+
+    .logo {
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 1.2rem;
+    }
+
+    nav {
+      display: flex;
+      gap: 1rem;
+    }
+
+    nav a {
+      padding: 0.45rem 0.9rem;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      border-radius: 999px;
+
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.25);
+
+      transition: 0.25s ease;
+    }
+
+    nav a:hover {
+      border-color: rgba(198,40,40,0.7);
+      box-shadow: 0 2px 12px rgba(198,40,40,0.25);
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+    }
+
+    .hero h1 {
+      font-size: clamp(3rem, 6vw, 5rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      max-width: 620px;
+      color: rgba(245,244,242,0.75);
+      font-size: 1.15rem;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.85rem;
+      color: rgba(245,244,242,0.45);
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="nav-inner">
+    <div class="logo">Studio Grace</div>
+    <nav>
+      <a href="#">Gallery</a>
+      <a href="#">About</a>
+      <a href="#">Notes</a>
+      <a href="#">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div>
+    <h1>One-of-One Garments</h1>
+    <p>Hand-crafted pieces treated as singular works. No reproductions. No noise. Just narrative and craft.</p>
+  </div>
+</section>
+
+<footer>
+  © <span id="year"></span> Studio Grace
+</footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
   <title>Studio Grace — One-of-One Garments</title>
   <meta name="description" content="Studio Grace creates one-of-one garments treated as singular works. Hand-crafted, narrative-driven, never reproduced." />
