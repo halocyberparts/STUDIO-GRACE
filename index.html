@@ -141,10 +141,51 @@
     }
 
     /* ================= GALLERY ================= */
-    .gallery-section {
-      padding:4rem 2rem;
-      background:#000;
-    }
+    <section id="gallery" class="gallery-section">
+
+  <button class="gallery-arrow left" onclick="slideGallery(-1)">‹</button>
+
+  <div class="gallery-viewport">
+    <div class="gallery-track" id="galleryTrack">
+
+      <figure class="piece">
+        <img src="./Images/background_black_coins.png">
+        <figcaption>Corduroy Jacket — One of one</figcaption>
+      </figure>
+
+      <figure class="piece">
+        <img src="./Images/My Custom.png">
+        <figcaption>Denim Jacket — One of one</figcaption>
+      </figure>
+
+      <figure class="piece">
+        <img src="./Images/Logo.png">
+        <figcaption>Narrative Piece</figcaption>
+      </figure>
+
+      <figure class="piece">
+        <img src="./Images/Blue_Sweater.png">
+        <figcaption>Collector Favorite</figcaption>
+      </figure>
+
+      <!-- hidden initially -->
+      <figure class="piece">
+        <img src="./Images/extra_1.png">
+        <figcaption>Archive Piece</figcaption>
+      </figure>
+
+      <figure class="piece">
+        <img src="./Images/extra_2.png">
+        <figcaption>Studio Study</figcaption>
+      </figure>
+
+    </div>
+  </div>
+
+  <button class="gallery-arrow right" onclick="slideGallery(1)">›</button>
+
+</section>
+
 
     .gallery {
       max-width:1400px;
