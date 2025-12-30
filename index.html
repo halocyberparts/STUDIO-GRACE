@@ -3,24 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <title>Studio Grace — One-of-One Garments</title>
   <meta name="description" content="Studio Grace creates one-of-one garments treated as singular works. Hand-crafted, narrative-driven, never reproduced." />
 
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
   <style>
-    /* RESET */
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
-      background: #f6f5f3;
-      color: #111;
-      line-height: 1.65;
+      font-family: 'Inter', sans-serif;
+      background: #000;
+      color: #fff;
+      line-height: 1.6;
+      scroll-behavior: smooth;
     }
 
-    img {
-      width: 100%;
-      display: block;
+    a {
+      text-decoration: none;
+      color: inherit;
     }
 
     section {
@@ -28,133 +29,158 @@
     }
 
     .container {
-      max-width: 1100px;
+      max-width: 1200px;
       margin: 0 auto;
     }
 
     /* HERO */
     .hero {
-      min-height: 90vh;
+      min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
+      flex-direction: column;
       text-align: center;
+      background: radial-gradient(circle at center, #111 0%, #000 100%);
     }
 
     .hero h1 {
-      font-size: clamp(3rem, 7vw, 5.5rem);
-      font-weight: 500;
-      letter-spacing: 0.02em;
+      font-size: clamp(3rem, 8vw, 6rem);
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      color: #fff;
+      margin-bottom: 1rem;
+      animation: fadeInUp 1s ease forwards;
     }
 
     .hero p {
-      margin-top: 1.25rem;
-      font-size: 1.15rem;
-      color: #444;
+      font-size: 1.25rem;
+      color: #aaa;
+      animation: fadeInUp 1.5s ease forwards;
+    }
+
+    .hero a.cta {
+      margin-top: 2rem;
+      font-size: 1rem;
+      padding: 0.75rem 1.5rem;
+      border: 2px solid #0070f3;
+      color: #0070f3;
+      border-radius: 30px;
+      transition: all 0.3s ease;
+    }
+
+    .hero a.cta:hover {
+      background: #0070f3;
+      color: #000;
     }
 
     /* GALLERY */
     .gallery {
       display: grid;
-      grid-template-columns: 1fr;
-      gap: 4rem;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 3rem;
     }
 
     .piece {
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    /* 👇 This is where the LIFE happens */
-    .img-wrap {
+      position: relative;
       overflow: hidden;
-      background: #eee;
-      transition: box-shadow 0.4s ease;
     }
 
-    .img-wrap img {
-      transition: transform 0.6s ease;
-      will-change: transform;
-    }
-
-    .piece:hover .img-wrap img {
-      transform: scale(1.06);
-    }
-
-    .piece:hover .img-wrap {
-      box-shadow: 0 30px 80px rgba(0,0,0,0.08);
-    }
-
-    figcaption {
-      margin-top: 0.9rem;
-      font-size: 0.9rem;
-      color: #555;
-      letter-spacing: 0.02em;
-    }
-
-    figcaption span {
+    .piece img {
+      width: 100%;
       display: block;
-      font-size: 0.8rem;
+      transition: transform 0.6s ease;
+    }
+
+    .piece:hover img {
+      transform: scale(1.07);
+    }
+
+    .piece figcaption {
+      margin-top: 1rem;
+      font-size: 0.95rem;
+      color: #ccc;
+      text-align: center;
+    }
+
+    .piece figcaption span {
+      display: block;
+      font-size: 0.85rem;
       color: #777;
-      margin-top: 0.2rem;
     }
 
     /* ABOUT */
     .about {
-      background: #fff;
+      background: #111;
+      color: #eee;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
     }
 
     .about p {
-      max-width: 720px;
-      margin: 0 auto;
-      font-size: 1.05rem;
-      color: #333;
-      text-align: center;
+      max-width: 800px;
+      font-size: 1.1rem;
+      line-height: 1.8;
     }
 
     /* STATEMENT */
     .statement {
       text-align: center;
-      font-size: 1.1rem;
-      color: #222;
+      font-size: 1.2rem;
+      padding: 4rem 2rem;
+      background: #000;
+      color: #ccc;
     }
 
     /* CONTACT */
     .contact {
       background: #111;
-      color: #f6f5f3;
+      color: #fff;
       text-align: center;
+      padding-bottom: 6rem;
     }
 
     .contact h2 {
       font-size: 2rem;
-      font-weight: 500;
       margin-bottom: 1rem;
     }
 
     .contact p {
-      font-size: 1rem;
-      color: #ccc;
+      font-size: 1.05rem;
+      color: #bbb;
       margin-bottom: 2rem;
     }
 
     .contact a {
       display: inline-block;
-      border-bottom: 1px solid #f6f5f3;
-      padding-bottom: 4px;
       font-size: 1rem;
+      padding-bottom: 4px;
+      border-bottom: 2px solid #0070f3;
+      transition: all 0.3s ease;
+    }
+
+    .contact a:hover {
+      color: #0070f3;
     }
 
     footer {
       padding: 2rem 1rem;
       text-align: center;
       font-size: 0.85rem;
-      color: #666;
+      color: #555;
+      background: #000;
     }
 
-    @media (min-width: 900px) {
-      .gallery {
-        grid-template-columns: 1fr 1fr;
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
       }
     }
   </style>
@@ -167,17 +193,16 @@
     <div class="container">
       <h1>Studio Grace</h1>
       <p>One-of-one garments. Hand-crafted. Never repeated.</p>
+      <a href="#gallery" class="cta">Explore the Collection</a>
     </div>
   </section>
 
   <!-- GALLERY -->
-  <section>
+  <section id="gallery">
     <div class="container gallery">
 
       <figure class="piece">
-        <div class="img-wrap">
-          <img src="./Images/Blue_Sweater.png" alt="Studio Grace hand-painted corduroy jacket">
-        </div>
+        <img src="./Images/Blue_Sweater.png" alt="Studio Grace hand-painted corduroy jacket">
         <figcaption>
           Corduroy Jacket
           <span>Hand-painted · One of one</span>
@@ -185,9 +210,7 @@
       </figure>
 
       <figure class="piece">
-        <div class="img-wrap">
-          <img src="./Images/My Custom.png" alt="Studio Grace hand-painted denim jacket">
-        </div>
+        <img src="./Images/My Custom.png" alt="Studio Grace hand-painted denim jacket">
         <figcaption>
           Denim Jacket
           <span>Hand-painted · One of one</span>
@@ -201,10 +224,7 @@
   <section class="about">
     <div class="container">
       <p>
-        Studio Grace is an independent studio focused on one-of-one garments.
-        Each piece is treated as a singular work — hand-drawn, hand-painted,
-        and never reproduced. The process values narrative, imperfection,
-        and the emotional weight clothing can carry.
+        Studio Grace is an independent studio focused on one-of-one garments. Each piece is treated as a singular work — hand-drawn, hand-painted, and never reproduced. The process values narrative, imperfection, and the emotional weight clothing can carry.
       </p>
     </div>
   </section>
@@ -223,10 +243,7 @@
   <section class="contact">
     <div class="container">
       <h2>Contact the Studio</h2>
-      <p>
-        Studio Grace does not operate on a traditional release schedule.
-        Inquiries and releases are handled directly through the studio.
-      </p>
+      <p>Studio Grace does not operate on a traditional release schedule. Inquiries and releases are handled directly through the studio.</p>
       <a href="mailto:studio@studiograce.com">studio@studiograce.com</a>
     </div>
   </section>
@@ -241,4 +258,3 @@
 
 </body>
 </html>
-
