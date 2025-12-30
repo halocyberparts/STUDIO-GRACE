@@ -1,19 +1,49 @@
-/* RESET */
+/* ================================
+   RESET
+   ================================ */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* BASE */
+/* ================================
+   SIGNATURE BACKGROUND
+   Coin Fabric — 37¢
+   ================================ */
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
-  background: #f5f4f2;
-  color: #111;
+
+  background-color: #050814;
+  background-image:
+    linear-gradient(
+      180deg,
+      #06091a 0%,
+      #020617 100%
+    );
+
+  color: #f5f4f2;
   line-height: 1.6;
 }
 
-/* HERO */
+/* Coin fabric overlay */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+
+  background-image: url("../images/bg/coin_fabric_37.png");
+  background-repeat: repeat;
+  background-size: 420px 420px;
+
+  opacity: 0.035; /* luxury subtle */
+  pointer-events: none;
+}
+
+/* ================================
+   HERO
+   ================================ */
 .hero {
   min-height: 80vh;
   display: flex;
@@ -33,10 +63,12 @@ body {
 .hero p {
   margin-top: 1rem;
   font-size: 1.1rem;
-  color: #444;
+  color: rgba(245, 244, 242, 0.75);
 }
 
-/* GALLERY */
+/* ================================
+   GALLERY
+   ================================ */
 .gallery {
   max-width: 1100px;
   margin: 4rem auto;
@@ -51,22 +83,27 @@ body {
   display: block;
 }
 
+/* Captions */
 figcaption {
   margin-top: 0.75rem;
   font-size: 0.9rem;
-  color: #555;
+  color: rgba(245, 244, 242, 0.6);
 }
 
-/* ABOUT */
+/* ================================
+   ABOUT
+   ================================ */
 .about {
   max-width: 700px;
   margin: 4rem auto;
   padding: 0 1.5rem;
   font-size: 1.05rem;
-  color: #333;
+  color: rgba(245, 244, 242, 0.8);
 }
 
-/* CTA */
+/* ================================
+   CTA
+   ================================ */
 .cta {
   text-align: center;
   margin: 4rem 0;
@@ -76,20 +113,28 @@ figcaption {
   display: inline-block;
   margin-top: 1rem;
   text-decoration: none;
-  color: #111;
-  border-bottom: 1px solid #111;
+  color: #f5f4f2;
+  border-bottom: 1px solid rgba(245, 244, 242, 0.5);
   padding-bottom: 2px;
 }
 
-/* FOOTER */
+.cta a:hover {
+  border-bottom-color: #f5f4f2;
+}
+
+/* ================================
+   FOOTER
+   ================================ */
 footer {
   text-align: center;
   padding: 2rem 0;
   font-size: 0.85rem;
-  color: #666;
+  color: rgba(245, 244, 242, 0.5);
 }
 
-/* RESPONSIVE */
+/* ================================
+   RESPONSIVE
+   ================================ */
 @media (min-width: 768px) {
   .gallery {
     grid-template-columns: 1fr 1fr;
