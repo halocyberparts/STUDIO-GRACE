@@ -188,7 +188,7 @@ a { text-decoration:none; color:inherit; }
   content:"";
   position:absolute;
   inset:0;
-  background:rgba(0,0,0,.6);
+  background: rgba(0,0,0,.45);
 }
 .about > * {
   position:relative;
@@ -293,8 +293,8 @@ const maxGalleryIndex = 2; // 5 images, 3 visible
 function slideGallery(dir) {
   galleryIndex += dir;
   galleryIndex = Math.max(0, Math.min(galleryIndex, maxGalleryIndex));
-  galleryTrack.style.transform = `translateX(-${galleryIndex * 33.333}%)`;
-}
+  galleryTrack.style.transform = `translateX(-${galleryIndex * 33.333}%) translateY(25%)`;
+
 </script>
 
 </body>
