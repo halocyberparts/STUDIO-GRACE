@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Studio Grace</title>
+  <meta name="description" content="Studio Grace — collectible, hand-crafted garments. One-of-one pieces. Limited drops." />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- HERO -->
+  <header class="hero">
+    <h1>Studio Grace</h1>
+    <p>Hand-crafted garments. One of one.</p>
+  </header>
+
+  <!-- FEATURED PIECES -->
+  <section class="gallery">
+    <figure>
+      <img src="images/pieces/jacket-01.jpg" alt="Studio Grace hand-painted corduroy jacket">
+      <figcaption>Corduroy Jacket — Hand painted, one of one</figcaption>
+    </figure>
+
+    <figure>
+      <img src="images/pieces/jacket-02.jpg" alt="Studio Grace hand-painted denim jacket">
+      <figcaption>Denim Jacket — Hand painted, one of one</figcaption>
+    </figure>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about">
+    <p>
+      Studio Grace creates one-of-one garments using hand-drawn imagery and
+      storytelling. Each piece is treated as a standalone work — never reproduced.
+    </p>
+  </section>
+
+  <!-- SOCIAL / CTA -->
+  <section class="cta">
+    <p>Worn by artists & athletes.</p>
+    <a href="#" target="_blank">Follow on Instagram</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© <span id="year"></span> Studio Grace</p>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
