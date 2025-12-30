@@ -399,6 +399,17 @@
     track.style.transform = `translateX(-${index * 100}%)`;
   }, 5000);
 </script>
+<script>
+  const galleryTrack = document.getElementById("galleryTrack");
+  let galleryIndex = 0;
+  const maxIndex = 2; // 6 images total, 4 visible → 2 steps
+
+  function slideGallery(direction) {
+    galleryIndex += direction;
+    galleryIndex = Math.max(0, Math.min(galleryIndex, maxIndex));
+    galleryTrack.style.transform = `translateX(-${galleryIndex * 100}%)`;
+  }
+</script>
 
 </body>
 </html>
