@@ -4,92 +4,219 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Studio Grace — One-of-One Garments</title>
+  <meta name="description" content="Studio Grace creates one-of-one garments treated as singular works. Hand-crafted, narrative-driven, never reproduced." />
 
+  <!-- FONT -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
   <style>
+    /* RESET */
     * { margin:0; padding:0; box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+
     body {
       font-family:'Inter',sans-serif;
       background:#000;
       color:#fff;
+      line-height:1.6;
+      overflow-x:hidden;
     }
 
-    /* HEADER */
-    .site-header { position:sticky; top:0; z-index:100; }
+    a { text-decoration:none; color:inherit; }
+
+    /* FILM GRAIN */
+    body::before {
+      content:"";
+      position:fixed;
+      inset:0;
+      background:url("Textures/filmgrain.png") center/cover;
+      opacity:.08;
+      pointer-events:none;
+      z-index:-1;
+    }
+
+    /* ================= HEADER ================= */
+    .site-header {
+      position:sticky;
+      top:0;
+      z-index:100;
+    }
+
     .header-top {
       height:34px;
       background:url("./Images/Levy_Thread.png") center/cover no-repeat;
-    }
-    .header-bottom {
-      height:64px;
       display:flex;
       align-items:center;
-      background:transparent;
     }
+
+    .header-bottom {
+      height:64px;
+      background: transparent;
+      display:flex;
+      align-items:center;
+      border-bottom:1px solid rgba(0,0,0,0.4);
+    }
+
     .nav-inner {
+      width:100%;
       max-width:1200px;
       margin:0 auto;
       padding:0 1.5rem;
       display:flex;
-      justify-content:space-between;
       align-items:center;
+      justify-content:space-between;
     }
+
+    .logo {
+      display:flex;
+      align-items:center;
+      gap:.8rem;
+      font-weight:700;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+    }
+
+    .logo img {
+      height:40px;
+    }
+
+    .main-nav {
+      display:flex;
+      gap:1rem;
+    }
+
     .main-nav a {
       background:#fff;
       color:#000;
       padding:.55rem 1.1rem;
       border-radius:999px;
+      font-size:.98rem;
       font-weight:600;
-      margin-right:.5rem;
+      text-transform:uppercase;
+      transition:.2s ease;
     }
 
-    /* HERO */
+    .main-nav a:hover {
+      transform:translateY(-1px);
+      box-shadow:0 4px 12px rgba(0,0,0,.3);
+    }
+
+    /* ================= HERO ================= */
     .hero {
       height:100vh;
+      min-height:600px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .hero-track {
+      display:flex;
+      height:100%;
+      transition:transform .6s ease;
+    }
+
+    .hero-slide {
+      min-width:100%;
+      position:relative;
       display:flex;
       align-items:center;
       justify-content:center;
       background:#111;
     }
 
+    .hero-slide img {
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      opacity:.72;
+    }
+
+    .hero-content {
+      position:absolute;
+      text-align:center;
+      max-width:800px;
+      padding:2rem;
+      background:rgba(0,0,0,.46);
+      backdrop-filter:blur(5px);
+      border-radius:12px;
+    }
+
+    .hero-content h1 {
+      font-size:clamp(3rem,7vw,5rem);
+      margin-bottom:.8rem;
+    }
+
+    .hero-content p {
+      font-size:1.2rem;
+      color:#ddd;
+    }
+
+    .hero-btn {
+      display:inline-block;
+      margin-top:1rem;
+      padding:.75rem 1.75rem;
+      border:2px solid #0070f3;
+      color:#0070f3;
+      border-radius:30px;
+    }
+
+    .hero-btn:hover {
+      background:#0070f3;
+      color:#000;
+    }
+
+    .hero-dots {
+      position:absolute;
+      bottom:2rem;
+      left:50%;
+      transform:translateX(-50%);
+      display:flex;
+      gap:8px;
+    }
+
+    .hero-dot {
+      width:12px;
+      height:12px;
+      border-radius:50%;
+      border:1px solid #fff;
+      background:rgba(255,255,255,.2);
+      cursor:pointer;
+    }
+
+    .hero-dot.active {
+      background:#0070f3;
+      border-color:#0070f3;
+    }
+
     /* ================= GALLERY ================= */
     #gallery {
       position:relative;
       background:url("./Images/logo_indigo_brown.png") center/cover no-repeat;
-      padding:7rem 2rem;   /* BIG breathing space */
+      padding:4rem 2rem;
     }
 
     #gallery::before {
       content:"";
       position:absolute;
       inset:0;
-      background:rgba(0,0,0,.5);
+      background:rgba(0,0,0,.55);
     }
 
     .gallery {
-      position:relative;
-      z-index:1;
-      max-width:900px;     /* smaller grid */
-      margin:0 auto;
-      display:grid;
-      grid-template-columns:repeat(2, 1fr);
-      gap:3.5rem;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
+
     .piece {
+      position:relative;
       border-radius:14px;
       overflow:hidden;
       border:1px solid rgba(255,255,255,.15);
       box-shadow:0 8px 32px rgba(0,0,0,.4);
-    }
-
-    /* STAGGER */
-    .piece:nth-child(odd) {
-      transform:translateY(-20px);
-    }
-    .piece:nth-child(even) {
-      transform:translateY(20px);
     }
 
     .piece img {
@@ -100,9 +227,9 @@
     .piece figcaption {
       position:absolute;
       bottom:0;
-      width:100%;
+      inset-inline:0;
       padding:1rem;
-      background:linear-gradient(to top, rgba(0,0,0,.7), transparent);
+      background:rgba(0,0,0,.6);
       opacity:0;
       transition:.3s ease;
       text-align:center;
@@ -112,7 +239,36 @@
       opacity:1;
     }
 
-    /* FOOTER */
+    /* ================= TEXT SECTIONS ================= */
+    .notes, .about {
+      max-width:900px;
+      margin:4rem auto;
+      padding:0 1.5rem;
+      text-align:center;
+      color:#ddd;
+    }
+
+    blockquote {
+      margin-top:1rem;
+      font-style:italic;
+      border-left:4px solid #0070f3;
+      padding-left:1rem;
+      color:#aaa;
+    }
+
+    /* ================= CONTACT ================= */
+    .contact {
+      background:#111;
+      padding:5rem 1.5rem;
+      text-align:center;
+    }
+
+    .contact a {
+      color:#0070f3;
+      border-bottom:2px solid #0070f3;
+    }
+
+    /* ================= FOOTER ================= */
     footer {
       text-align:center;
       padding:2rem;
@@ -125,10 +281,17 @@
 <body>
 
 <header class="site-header">
-  <div class="header-top"></div>
+  <div class="header-top">
+    <div class="nav-inner">
+      <div class="logo">
+        <img src="./Images/Levy_Thread.png" alt="Studio Grace">
+        Studio Grace
+      </div>
+    </div>
+  </div>
+
   <div class="header-bottom">
     <div class="nav-inner">
-      <strong>STUDIO GRACE</strong>
       <nav class="main-nav">
         <a href="#gallery">Gallery</a>
         <a href="#about">About</a>
@@ -139,30 +302,49 @@
   </div>
 </header>
 
-<section id="gallery">
-  <div class="gallery">
-    <figure class="piece">
-      <img src="./Images/background_black_coins.png">
-      <figcaption>Corduroy Jacket</figcaption>
-    </figure>
-    <figure class="piece">
-      <img src="./Images/My Custom.png">
-      <figcaption>Denim Jacket</figcaption>
-    </figure>
-    <figure class="piece">
-      <img src="./Images/Logo.png">
-      <figcaption>Studio Grace Mark</figcaption>
-    </figure>
-    <figure class="piece">
+<section class="hero">
+  <div class="hero-track">
+    <div class="hero-slide">
       <img src="./Images/Blue_Sweater.png">
-      <figcaption>Collector Favorite</figcaption>
-    </figure>
+      <div class="hero-content">
+        <h1>Hand-Crafted Mastery</h1>
+        <p>One-of-one garments treated as singular works of narrative art.</p>
+        <a href="#gallery" class="hero-btn">Explore Collection</a>
+      </div>
+    </div>
   </div>
 </section>
 
+<section id="gallery">
+  <div class="gallery">
+    <figure class="piece"><img src="./Images/background_black_coins.png"><figcaption>Corduroy Jacket — One of one</figcaption></figure>
+    <figure class="piece"><img src="./Images/My Custom.png"><figcaption>Denim Jacket — One of one</figcaption></figure>
+    <figure class="piece"><img src="./Images/Logo.png"><figcaption>Narrative Piece</figcaption></figure>
+    <figure class="piece"><img src="./Images/Blue_Sweater.png"><figcaption>Collector Favorite</figcaption></figure>
+  </div>
+</section>
+
+<section id="about" class="about">
+  <p>Studio Grace is an independent atelier where each garment is treated as a singular work.</p>
+</section>
+
+<section id="notes" class="notes">
+  <p>Fashion here is not worn — it is inhabited.</p>
+  <blockquote>“Clothes gain strength not from repetition, but from singularity.”</blockquote>
+</section>
+
+<section id="contact" class="contact">
+  <h2>Contact the Studio</h2>
+  <a href="mailto:studio@studiograce.com">studio@studiograce.com</a>
+</section>
+
 <footer>
-  © Studio Grace
+  © <span id="year"></span> Studio Grace
 </footer>
+
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
 
 </body>
 </html>
