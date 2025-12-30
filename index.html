@@ -3,49 +3,224 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Studio Grace</title>
-  <meta name="description" content="Studio Grace — collectible, hand-crafted garments. One-of-one pieces. Limited drops." />
 
-  <link rel="stylesheet" href="style.css" />
+  <title>Studio Grace — One-of-One Garments</title>
+  <meta name="description" content="Studio Grace creates one-of-one garments treated as singular works. Hand-crafted, narrative-driven, never reproduced." />
+
+  <style>
+    /* RESET */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+      background: #f6f5f3;
+      color: #111;
+      line-height: 1.65;
+    }
+
+    img {
+      width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* LAYOUT */
+    section {
+      padding: 5rem 1.5rem;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: #f6f5f3;
+    }
+
+    .hero h1 {
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      font-weight: 500;
+      letter-spacing: 0.02em;
+    }
+
+    .hero p {
+      margin-top: 1.25rem;
+      font-size: 1.15rem;
+      color: #444;
+    }
+
+    /* GALLERY */
+    .gallery {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 4rem;
+    }
+
+    .gallery figure {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    figcaption {
+      margin-top: 0.75rem;
+      font-size: 0.9rem;
+      color: #555;
+      letter-spacing: 0.02em;
+    }
+
+    figcaption span {
+      display: block;
+      font-size: 0.8rem;
+      color: #777;
+      margin-top: 0.2rem;
+    }
+
+    /* ABOUT */
+    .about {
+      background: #fff;
+    }
+
+    .about p {
+      max-width: 720px;
+      margin: 0 auto;
+      font-size: 1.05rem;
+      color: #333;
+      text-align: center;
+    }
+
+    /* STATEMENT */
+    .statement {
+      text-align: center;
+      font-size: 1.1rem;
+      color: #222;
+    }
+
+    /* CONTACT */
+    .contact {
+      background: #111;
+      color: #f6f5f3;
+      text-align: center;
+    }
+
+    .contact h2 {
+      font-size: 2rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+
+    .contact p {
+      font-size: 1rem;
+      color: #ccc;
+      margin-bottom: 2rem;
+    }
+
+    .contact a {
+      display: inline-block;
+      border-bottom: 1px solid #f6f5f3;
+      padding-bottom: 4px;
+      font-size: 1rem;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 2rem 1rem;
+      text-align: center;
+      font-size: 0.85rem;
+      color: #666;
+      background: #f6f5f3;
+    }
+
+    /* RESPONSIVE */
+    @media (min-width: 900px) {
+      .gallery {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
   <!-- HERO -->
-  <header class="hero">
-    <h1>Studio Grace</h1>
-    <p>Hand-crafted garments. One of one.</p>
-  </header>
+  <section class="hero">
+    <div class="container">
+      <h1>Studio Grace</h1>
+      <p>One-of-one garments. Hand-crafted. Never repeated.</p>
+    </div>
+  </section>
 
-  <!-- FEATURED PIECES -->
-  <section class="gallery">
-    <figure>
-      <img src="images/pieces/jacket-01.jpg" alt="Studio Grace hand-painted corduroy jacket">
-      <figcaption>Corduroy Jacket — Hand painted, one of one</figcaption>
-    </figure>
+  <!-- GALLERY -->
+  <section>
+    <div class="container gallery">
 
-    <figure>
-      <img src="images/pieces/jacket-02.jpg" alt="Studio Grace hand-painted denim jacket">
-      <figcaption>Denim Jacket — Hand painted, one of one</figcaption>
-    </figure>
+      <figure>
+        <img src="images/pieces/jacket-01.jpg" alt="Studio Grace hand-painted corduroy jacket">
+        <figcaption>
+          Corduroy Jacket
+          <span>Hand-painted · One of one</span>
+        </figcaption>
+      </figure>
+
+      <figure>
+        <img src="images/pieces/jacket-02.jpg" alt="Studio Grace hand-painted denim jacket">
+        <figcaption>
+          Denim Jacket
+          <span>Hand-painted · One of one</span>
+        </figcaption>
+      </figure>
+
+    </div>
   </section>
 
   <!-- ABOUT -->
   <section class="about">
-    <p>
-      Studio Grace creates one-of-one garments using hand-drawn imagery and
-      storytelling. Each piece is treated as a standalone work — never reproduced.
-    </p>
+    <div class="container">
+      <p>
+        Studio Grace is an independent studio focused on one-of-one garments.
+        Each piece is treated as a singular work — hand-drawn, hand-painted,
+        and never reproduced. The process values narrative, imperfection,
+        and the emotional weight clothing can carry.
+      </p>
+    </div>
   </section>
 
-  <!-- SOCIAL / CTA -->
-  <section class="cta">
-    <p>Worn by artists & athletes.</p>
-    <a href="#" target="_blank">Follow on Instagram</a>
+  <!-- STATEMENT -->
+  <section class="statement">
+    <div class="container">
+      <p>
+        Worn by artists, athletes, and collectors.
+        <br />
+        Released quietly. Shared intentionally.
+      </p>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact">
+    <div class="container">
+      <h2>Contact the Studio</h2>
+      <p>
+        Studio Grace does not operate on a traditional release schedule.
+        Inquiries and releases are handled directly through the studio.
+      </p>
+      <a href="mailto:studio@studiograce.com">studio@studiograce.com</a>
+    </div>
   </section>
 
   <!-- FOOTER -->
   <footer>
-    <p>© <span id="year"></span> Studio Grace</p>
+    © <span id="year"></span> Studio Grace · All rights reserved
   </footer>
 
   <script>
