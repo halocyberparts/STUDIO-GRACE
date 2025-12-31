@@ -404,8 +404,8 @@ const maxGalleryIndex = 2; // 5 images, 3 visible
 function slideGallery(dir) {
   galleryIndex += dir;
   galleryIndex = Math.max(0, Math.min(galleryIndex, maxGalleryIndex));
-  galleryTrack.style.transform =
-    `translateX(-${galleryIndex * 33.333}%) translateY(25%)`;
+ galleryTrack.style.transform =
+  `translateX(-${galleryIndex * 33.333}%)`;
 }
 </script>
 <script>
