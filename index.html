@@ -410,6 +410,36 @@ function toggleMenu() {
   document.getElementById("mobileMenu").classList.toggle("open");
 }
 </script>
+<script>
+let mobileGalleryInterval = null;
+
+function startMobileGallery() {
+  if (window.innerWidth > 768) return;
+
+  const track = document.getElementById("galleryTrack");
+  const cards = track.children.length;
+  let index = 0;
+
+  mobileGalleryInterval = setInterval(() => {
+    index = (index + 1) % cards;
+    track.style.transform = `translateX(-${index * 70}vw)`;
+  }, 2800); // faster than hero (hero = 5000)
+}
+
+function stopMobileGallery() {
+  if (mobileGalleryInterval) {
+    clearInterval(mobileGalleryInterval);
+    mobileGalleryInterval = null;
+  }
+}
+
+window.addEventListener("load", startMobileGallery);
+window.addEventListener("resize", () => {
+  stopMobileGallery();
+  startMobileGallery();
+});
+</script>
+  
 </body>
 </html>
 
