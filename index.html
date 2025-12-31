@@ -212,12 +212,68 @@ a { text-decoration:none; color:inherit; }
   position:relative;
 }
 
+  
 /* ================= FOOTER ================= */
 footer {
   padding:2rem;
   text-align:center;
   color:#555;
 }
+
+/* ================= MOBILE NAV ================= */
+
+.nav-toggle {
+  display: none;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* slide-out menu */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 70%;
+  height: 100vh;
+  background: rgba(10, 10, 10, 0.96);
+  backdrop-filter: blur(10px);
+  padding: 6rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  transition: right 0.4s ease;
+  z-index: 999;
+}
+
+.mobile-menu a {
+  font-size: 1.3rem;
+  font-weight: 600;
+  padding: 0.8rem 1rem;
+  border-radius: 999px;
+  background: #fff;
+  color: #000;
+  text-align: center;
+}
+
+/* open state */
+.mobile-menu.open {
+  right: 0;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 900px) {
+  .desktop-nav {
+    display: none;
+  }
+
+  .nav-toggle {
+    display: block;
+  }
+}
+  
 </style>
 </head>
 
@@ -228,14 +284,28 @@ footer {
   <div class="header-bottom">
     <div class="nav-inner">
       <div class="logo">STUDIO GRACE</div>
-      <nav class="main-nav">
-        <a href="#gallery">Gallery</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-      </nav>
+      <!-- DESKTOP NAV -->
+<nav class="main-nav desktop-nav">
+  <a href="#gallery">Gallery</a>
+  <a href="#about">About</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<!-- MOBILE HAMBURGER -->
+<button class="nav-toggle" aria-label="Open menu" onclick="toggleMenu()">
+  ☰
+</button>
+
     </div>
   </div>
 </header>
+  
+<!-- MOBILE SLIDE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#gallery" onclick="toggleMenu()">Gallery</a>
+  <a href="#about" onclick="toggleMenu()">About</a>
+  <a href="#contact" onclick="toggleMenu()">Contact</a>
+</div>
 
 <!-- HERO -->
 <section class="hero">
@@ -316,7 +386,11 @@ function slideGallery(dir) {
   galleryTrack.style.transform = `translateX(-${galleryIndex * 33.333}%) translateY(25%)`;
 
 </script>
-
+<script>
+function toggleMenu() {
+  document.getElementById("mobileMenu").classList.toggle("open");
+}
+</script>
 </body>
 </html>
 
