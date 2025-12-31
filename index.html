@@ -400,7 +400,9 @@ setInterval(() => {
 <script>
 const galleryTrack = document.getElementById("galleryTrack");
 let galleryIndex = 0;
-const maxGalleryIndex = 2; // 5 images, 3 visible
+const visibleCards = 3;
+const totalCards = galleryTrack.children.length;
+const maxGalleryIndex = totalCards - visibleCards;
 
 function slideGallery(dir) {
   galleryIndex += dir;
