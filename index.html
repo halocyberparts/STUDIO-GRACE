@@ -151,12 +151,17 @@ a { text-decoration:none; color:inherit; }
   transition:transform .6s ease;
 }
 .piece {
-  flex:0 0 calc(33.333% - 1.35rem);
-  border-radius:14px;
-  overflow:hidden;
-  border:1px solid rgba(255,255,255,.15);
-  box-shadow:0 8px 32px rgba(0,0,0,.4);
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+
+  /* soft separation */
+  box-shadow:
+    0 12px 28px rgba(0, 0, 0, 0.65),
+    0 0 0 1px rgba(255, 255, 255, 0.06),
+    inset 0 0 30px rgba(255, 255, 255, 0.04);
 }
+
 .piece img {
   width:100%;
   display:block;
