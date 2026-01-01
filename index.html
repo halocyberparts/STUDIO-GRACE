@@ -153,7 +153,6 @@ body {
 }
 
 /* ================= GALLERY ================= */
-/* ================= GALLERY ================= */
 .gallery-section {
   background: #000;
   padding: 5rem 2rem;
@@ -226,6 +225,28 @@ body {
   }
 }
 
+ .gallery-arrow {
+  opacity: 0.7;
+  transition: all 0.3s ease;
+}
+
+.gallery-arrow:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.gallery-arrow:disabled {
+  opacity: 0.2;
+  cursor: default;
+  pointer-events: none;
+}
+
+.gallery-arrow svg {
+  pointer-events: none;
+  display: block;
+  margin: auto;
+}
+ 
 /* ================= ABOUT ================= */
 .about {
   background: url("./Images/leather_background.jpg") center/cover no-repeat;
