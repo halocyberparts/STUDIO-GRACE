@@ -742,7 +742,14 @@ function scrollGallery(direction) {
   track.style.transform = `translateX(-${galleryScrollX}px)`;
 }
 </script>
-    
+<script>
+function enableSound() {
+  const iframe = document.getElementById("brandVideo");
+  if (iframe && iframe.src.includes("mute=1")) {
+    iframe.src = iframe.src.replace("mute=1", "mute=0");
+    document.querySelector(".sound-toggle").style.display = "none";
+  }
+}
 </script>
 </body>
 </html>
