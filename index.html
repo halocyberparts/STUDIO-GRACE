@@ -619,11 +619,24 @@ footer {
   transform: scale(1.05);
 }  
 
-.fa-brands, .fa-solid {
-  font-size: 2rem;
-  color: red;
+/* Clean, high-end social icons */
+.contact-links {
+  display: flex;
+  justify-content: center;
+  gap: 3rem; 
+  margin-top: 4rem;
 }
-  
+
+.contact-links a {
+  font-size: 1.8rem;
+  color: rgba(255, 255, 255, 0.6); /* Muted white by default */
+  transition: all 0.3s ease;
+}
+
+.contact-links a:hover {
+  color: #ffffff; /* Bright white on hover */
+  transform: translateY(-3px); /* Subtle lift */
+}        
 </style>
 </head>
 
