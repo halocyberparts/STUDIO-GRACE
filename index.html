@@ -802,41 +802,44 @@ footer {
 
 <script>
 /* Mobile menu */
-
 function toggleMenu() {
   document.getElementById("mobileMenu").classList.toggle("open");
 }
 
-/* Gallery (desktop + mobile) */
+/* Hero slider */
+const heroTrack = document.getElementById("heroTrack");
+let heroIndex = 0;
+setInterval(() => {
+  heroIndex = (heroIndex + 1) % heroTrack.children.length;
+  heroTrack.style.transform = `translateX(-${heroIndex * 100}%)`;
+}, 3500);
 
+/* Gallery logic */
 let galleryScrollX = 0;
+let galleryIndex = 0;
 
 function scrollGallery(direction) {
   const track = document.getElementById("galleryTrack");
   const container = track.parentElement;
   const scrollAmount = container.offsetWidth * 0.8;
+
   galleryScrollX += direction * scrollAmount;
   const maxScroll = track.scrollWidth - container.offsetWidth;
+
   if (galleryScrollX < 0) galleryScrollX = 0;
   if (galleryScrollX > maxScroll) galleryScrollX = maxScroll;
+
   track.style.transform = `translateX(-${galleryScrollX}px)`;
   updateArrowState(galleryScrollX, maxScroll);
 }
 
 function updateArrowState(x, max) {
-  document.getElementById("arrowLeft").disabled = x <= 0;
-  document.getElementById("arrowRight").disabled = x >= max;
+  const leftArrow = document.getElementById("arrowLeft");
+  const rightArrow = document.getElementById("arrowRight");
+  if (!leftArrow || !rightArrow) return;
+  leftArrow.disabled = x <= 0;
+  rightArrow.disabled = x >= max;
 }
-
-window.addEventListener('load', () => {
-  const track = document.getElementById("galleryTrack");
-  const container = track.parentElement;
-  const maxScroll = track.scrollWidth - container.offsetWidth;
-  updateArrowState(galleryScrollX, maxScroll);
-});
-
-/* Mobile auto-scroll */
-let galleryIndex = 0;
 
 function autoGallery() {
   if (window.innerWidth > 768) return;
@@ -847,25 +850,22 @@ function autoGallery() {
 
 setInterval(autoGallery, 2800);
 
-/* About video sound toggle */
+window.addEventListener('load', () => {
+  const track = document.getElementById("galleryTrack");
+  const container = track.parentElement;
+  const maxScroll = track.scrollWidth - container.offsetWidth;
+  updateArrowState(galleryScrollX, maxScroll);
+});
 
+/* Video sound control */
 function enableSound() {
   const iframe = document.getElementById("brandVideo");
   if (iframe && iframe.src.includes("mute=1")) {
     iframe.src = iframe.src.replace("mute=1", "mute=0");
-    const btn = document.querySelector(".sound-toggle");
-    if (btn) btn.style.display = "none";
+    document.querySelector(".sound-toggle").style.display = "none";
   }
 }
+</script>
 
-/* Hero slider */
-const heroTrack = document.getElementById("heroTrack");
-let heroIndex = 0;
-
-setInterval(() => {
-  heroIndex = (heroIndex + 1) % heroTrack.children.length;
-  heroTrack.style.transform = `translateX(-${heroIndex * 100}%)`;
-}, 3500);
-</script> 
 </body>
 </html>
