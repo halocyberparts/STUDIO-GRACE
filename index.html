@@ -698,6 +698,26 @@ const observer = new IntersectionObserver(entries => {
 }, { threshold: 0.15 });
 
 revealItems.forEach(el => observer.observe(el));
+
+<script>
+let galleryScrollX = 0;
+
+function scrollGallery(direction) {
+  const track = document.getElementById("galleryTrack");
+  const container = track.parentElement;
+  const scrollAmount = container.offsetWidth * 0.8;
+
+  galleryScrollX += direction * scrollAmount;
+
+  const maxScroll = track.scrollWidth - container.offsetWidth;
+
+  if (galleryScrollX < 0) galleryScrollX = 0;
+  if (galleryScrollX > maxScroll) galleryScrollX = maxScroll;
+
+  track.style.transform = `translateX(-${galleryScrollX}px)`;
+}
+</script>
+    
 </script>
 </body>
 </html>
