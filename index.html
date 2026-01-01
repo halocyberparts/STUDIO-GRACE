@@ -452,6 +452,42 @@ footer {
 @media (max-width: 768px) {
   .piece { flex: 0 0 66vw; }
 }
+
+.gallery-arrows {
+  display: none;
+}
+
+@media (min-width: 769px) {
+  .gallery-arrows {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .gallery-arrows button {
+    background: #fff;
+    color: #000;
+    border: none;
+    font-size: 2rem;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
+  }
+
+  .gallery-arrows button:hover {
+    background: #f0f0f0;
+  }
+
+  .gallery-track {
+    transition: transform 0.4s ease;
+    will-change: transform;
+  }
+}
+  
 </style>
 </head>
 
