@@ -468,13 +468,16 @@ footer {
     </div>
 
     <div class="about-video">
-        <iframe
-      src="https://www.youtube.com/embed/Ju9aQjM4nio?autoplay=1&mute=1&loop=1&playlist=Ju9aQjM4nio&playsinline=1&rel=0&modestbranding=1"
-      title="Grace Collection — Crafted With Intention"
-      frameborder="0"
-      allow="autoplay; encrypted-media; picture-in-picture"
-      allowfullscreen>
-    </iframe>
+      <button class="sound-toggle" onclick="enableSound()">
+          Sound On
+        </button>
+       <iframe
+        id="brandVideo"
+        src="https://www.youtube.com/embed/Ju9aQjM4nio?autoplay=1&mute=1&loop=1&playlist=Ju9aQjM4nio&playsinline=1&controls=0"
+        title="Grace Collection — Crafted With Intention"
+        allow="autoplay; encrypted-media"
+        allowfullscreen>
+      </iframe>
     </div>
   </div>
 </section>
@@ -549,6 +552,12 @@ function toggleMenu() {
   document.getElementById("mobileMenu").classList.toggle("open");
 }
 </script>
-
+<script>
+function enableSound() {
+  const iframe = document.getElementById("brandVideo");
+  iframe.src = iframe.src.replace("mute=1", "mute=0");
+  document.querySelector(".sound-toggle").style.display = "none";
+}
+</script>
 </body>
 </html>
