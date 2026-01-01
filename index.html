@@ -801,119 +801,24 @@ footer {
 <footer>© Studio Grace</footer>
 
 <script>
-/* Hero slider — faster */
-const heroTrack = document.getElementById("heroTrack");
-let heroIndex = 0;
-setInterval(() => {
-  heroIndex = (heroIndex + 1) % heroTrack.children.length;
-  heroTrack.style.transform = `translateX(-${heroIndex * 100}%)`;
-}, 3500);
-
-/* Gallery auto-scroll (mobile only) */
-let galleryIndex = 0;
-function autoGallery() {
-  if (window.innerWidth > 768) return;
-  const track = document.getElementById("galleryTrack");
-  galleryIndex = (galleryIndex + 1) % track.children.length;
-  track.style.transform = `translateX(-${galleryIndex * 70}vw)`;
-}
-setInterval(autoGallery, 2800);
-
 /* Mobile menu */
+
 function toggleMenu() {
   document.getElementById("mobileMenu").classList.toggle("open");
 }
-</script>
-<script>
-function enableSound() {
-  const iframe = document.getElementById("brandVideo");
-  iframe.src = iframe.src.replace("mute=1", "mute=0");
-  document.querySelector(".sound-toggle").style.display = "none";
-}
-</script>
-  <script>
-const revealItems = document.querySelectorAll('.reveal');
 
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-    }
-  });
-}, { threshold: 0.15 });
+/* Gallery (desktop + mobile) */
 
-revealItems.forEach(el => observer.observe(el));
-
-<script>
 let galleryScrollX = 0;
 
 function scrollGallery(direction) {
   const track = document.getElementById("galleryTrack");
   const container = track.parentElement;
   const scrollAmount = container.offsetWidth * 0.8;
-
   galleryScrollX += direction * scrollAmount;
-
   const maxScroll = track.scrollWidth - container.offsetWidth;
-
   if (galleryScrollX < 0) galleryScrollX = 0;
   if (galleryScrollX > maxScroll) galleryScrollX = maxScroll;
-
-  track.style.transform = `translateX(-${galleryScrollX}px)`;
-}
-</script>
-<script>
-function enableSound() {
-  const iframe = document.getElementById("brandVideo");
-  if (iframe && iframe.src.includes("mute=1")) {
-    iframe.src = iframe.src.replace("mute=1", "mute=0");
-    document.querySelector(".sound-toggle").style.display = "none";
-  }
-}
-</script>
-<script>
-let galleryScrollX = 0;
-
-function scrollGallery(direction) {
-  const track = document.getElementById("galleryTrack");
-  const container = track.parentElement;
-  const scrollAmount = container.offsetWidth * 0.8;
-
-  galleryScrollX += direction * scrollAmount;
-
-  const maxScroll = track.scrollWidth - container.offsetWidth;
-
-  if (galleryScrollX < 0) galleryScrollX = 0;
-  if (galleryScrollX > maxScroll) galleryScrollX = maxScroll;
-
-  track.style.transform = `translateX(-${galleryScrollX}px)`;
-}
-
-// Mobile auto-scroll
-let galleryIndex = 0;
-function autoGallery() {
-  if (window.innerWidth > 768) return; // only mobile
-  const track = document.getElementById("galleryTrack");
-  galleryIndex = (galleryIndex + 1) % track.children.length;
-  track.style.transform = `translateX(-${galleryIndex * 70}vw)`;
-}
-setInterval(autoGallery, 2800);
-</script>  
-<script>
-let galleryScrollX = 0;
-
-function scrollGallery(direction) {
-  const track = document.getElementById("galleryTrack");
-  const container = track.parentElement;
-  const scrollAmount = container.offsetWidth * 0.8;
-
-  galleryScrollX += direction * scrollAmount;
-
-  const maxScroll = track.scrollWidth - container.offsetWidth;
-
-  if (galleryScrollX < 0) galleryScrollX = 0;
-  if (galleryScrollX > maxScroll) galleryScrollX = maxScroll;
-
   track.style.transform = `translateX(-${galleryScrollX}px)`;
   updateArrowState(galleryScrollX, maxScroll);
 }
@@ -923,13 +828,44 @@ function updateArrowState(x, max) {
   document.getElementById("arrowRight").disabled = x >= max;
 }
 
-// Initialize state on page load
 window.addEventListener('load', () => {
   const track = document.getElementById("galleryTrack");
   const container = track.parentElement;
   const maxScroll = track.scrollWidth - container.offsetWidth;
   updateArrowState(galleryScrollX, maxScroll);
 });
-</script>  
+
+/* Mobile auto-scroll */
+let galleryIndex = 0;
+
+function autoGallery() {
+  if (window.innerWidth > 768) return;
+  const track = document.getElementById("galleryTrack");
+  galleryIndex = (galleryIndex + 1) % track.children.length;
+  track.style.transform = `translateX(-${galleryIndex * 70}vw)`;
+}
+
+setInterval(autoGallery, 2800);
+
+/* About video sound toggle */
+
+function enableSound() {
+  const iframe = document.getElementById("brandVideo");
+  if (iframe && iframe.src.includes("mute=1")) {
+    iframe.src = iframe.src.replace("mute=1", "mute=0");
+    const btn = document.querySelector(".sound-toggle");
+    if (btn) btn.style.display = "none";
+  }
+}
+
+/* Hero slider */
+const heroTrack = document.getElementById("heroTrack");
+let heroIndex = 0;
+
+setInterval(() => {
+  heroIndex = (heroIndex + 1) % heroTrack.children.length;
+  heroTrack.style.transform = `translateX(-${heroIndex * 100}%)`;
+}, 3500);
+</script> 
 </body>
 </html>
