@@ -196,7 +196,7 @@ a { text-decoration:none; color:inherit; }
 .gallery-arrow.left { left:1rem; }
 .gallery-arrow.right { right:1rem; }
 
-/* ================= ABOUT ================= */
+/* ================= ABOUT ================= */ 
 .about {
   background:url("./Images/leather_background.jpg") center/cover no-repeat;
   padding:8rem 2rem;
@@ -213,6 +213,38 @@ a { text-decoration:none; color:inherit; }
   position:relative;
 }
 
+.about-body {
+  background: #111; /* replace brown */
+  padding: 8rem 2rem;
+}
+
+.about-body-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+}
+
+.about-story h2 {
+  letter-spacing: .12em;
+  margin-bottom: 1.5rem;
+}
+
+.about-story p {
+  max-width: 700px;
+  margin: 0 auto 1.2rem;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #ddd;
+}
+
+.about-video video {
+  width: 100%;
+  border-radius: 16px;
+  box-shadow:
+    0 20px 60px rgba(0,0,0,.6);
+}
   
 /* ================= FOOTER ================= */
 footer {
