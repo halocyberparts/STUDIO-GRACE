@@ -445,8 +445,11 @@ function stopMobileGallery() {
   if (mobileGalleryInterval) {
     clearInterval(mobileGalleryInterval);
     mobileGalleryInterval = null;
+    galleryTrack.style.transform = "";
+    galleryIndex = 0;
   }
 }
+
 
 window.addEventListener("load", startMobileGallery);
 window.addEventListener("resize", () => {
