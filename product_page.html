@@ -18,9 +18,30 @@
 
 body {
   font-family: 'Inter', sans-serif;
-  background: var(--bg-dark);
+  /* This creates a soft glow in the center of the screen that follows the scroll */
+  background: radial-gradient(circle at 50% 30%, #1a1a1a 0%, #070707 70%);
+  background-attachment: fixed; 
   color: #fff;
   overflow-x: hidden;
+}
+
+/* Add a subtle "Noise" texture to make the color look like high-end fabric */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url("https://www.transparenttextures.com/patterns/carbon-fibre.png");
+  opacity: 0.15;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Update the statement section to feel like a "Close Up" on a spotlight */
+.products-statement {
+  padding: 10rem 2rem;
+  text-align: center;
+  background: radial-gradient(circle at center, #141414 0%, #070707 100%);
+  border-top: 1px solid rgba(255, 107, 0, 0.15);
 }
 
 /* Subtle texture overlay for the whole site */
