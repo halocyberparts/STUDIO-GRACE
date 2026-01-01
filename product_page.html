@@ -10,39 +10,69 @@
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
 
-body {
-  font-family: 'Inter', sans-serif;
-  background: #0b0b0b;
-  color: #fff;
+:root {
+  --accent-orange: #ff6b00; /* A more "molten" orange */
+  --bg-dark: #070707;
+  --card-bg: #111111;
 }
 
-a { color: inherit; text-decoration: none; }
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg-dark);
+  color: #fff;
+  overflow-x: hidden;
+}
+
+/* Subtle texture overlay for the whole site */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: 100;
+}
+
+a { color: inherit; text-decoration: none; transition: 0.3s; }
 
 /* ================= HEADER ================= */
 .header {
-  padding: 1.8rem 2rem;
+  padding: 2.5rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 2px solid orange;
+  /* Glowing border instead of flat orange */
+  border-bottom: 1px solid rgba(255, 107, 0, 0.3);
+  box-shadow: 0 4px 30px rgba(255, 107, 0, 0.05);
 }
 
 .header h1 {
-  letter-spacing: .16em;
-  font-size: 1rem;
+  letter-spacing: .4em; /* Extra spacing for luxury feel */
+  font-size: 0.85rem;
+  font-weight: 300;
+  text-transform: uppercase;
 }
 
 .header a {
-  padding: .5rem 1.2rem;
+  padding: .5rem 1.5rem;
+  background: transparent;
+  color: #fff;
+  border: 1px solid #fff;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.header a:hover {
   background: #fff;
   color: #000;
-  border-radius: 999px;
-  font-weight: 600;
 }
 
 /* ================= HERO ================= */
 .products-hero {
-  min-height: 70vh;
+  min-height: 85vh;
   background: url("./Images/leather_background.jpg") center/cover no-repeat;
   position: relative;
   display: flex;
@@ -51,11 +81,12 @@ a { color: inherit; text-decoration: none; }
   text-align: center;
 }
 
+/* Darker, more cinematic gradient overlay */
 .products-hero::before {
   content:"";
   position:absolute;
   inset:0;
-  background: rgba(0,0,0,.6);
+  background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(7,7,7,1));
 }
 
 .products-hero-content {
@@ -65,65 +96,77 @@ a { color: inherit; text-decoration: none; }
 }
 
 .products-hero h2 {
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  letter-spacing: .14em;
-  margin-bottom: 1.5rem;
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 700;
+  letter-spacing: .2em;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
 }
 
 .products-hero p {
-  max-width: 620px;
+  max-width: 500px;
   margin: 0 auto;
-  line-height: 1.7;
-  color: #ddd;
+  line-height: 1.8;
+  color: #aaa;
+  font-weight: 300;
+  letter-spacing: 0.05em;
 }
 
 /* ================= PRODUCT GRID ================= */
 .products-section {
-  padding: 6rem 2rem;
+  padding: 8rem 2rem;
   max-width: 1400px;
   margin: 0 auto;
 }
 
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 3rem;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 4rem; /* More breathing room */
 }
 
 .product-card {
-  background: #111;
-  border-radius: 18px;
+  background: transparent; /* Cleaner look */
+  border-radius: 0; /* Sharp corners feel more high-fashion */
   overflow: hidden;
-  box-shadow:
-    0 20px 50px rgba(0,0,0,.8),
-    inset 0 0 0 1px rgba(255,255,255,.06);
-  transition: transform .35s ease;
+  transition: all .5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .product-card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-10px);
 }
 
 .product-card img {
   width: 100%;
+  aspect-ratio: 4 / 5; /* Professional portrait ratio */
+  object-fit: cover;
   display: block;
+  filter: grayscale(20%); /* Artistic desaturation */
+  transition: 0.5s;
+}
+
+.product-card:hover img {
+  filter: grayscale(0%);
 }
 
 .product-info {
-  padding: 1.8rem;
+  padding: 1.5rem 0; /* Padding only on top/bottom */
 }
 
 .product-info h3 {
-  font-size: 1.1rem;
-  letter-spacing: .1em;
-  margin-bottom: .6rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: .15em;
+  margin-bottom: .8rem;
+  text-transform: uppercase;
 }
 
 .product-info p {
-  font-size: .95rem;
-  line-height: 1.6;
-  color: #ccc;
-  margin-bottom: 1.4rem;
+  font-size: .9rem;
+  line-height: 1.7;
+  color: #888;
+  margin-bottom: 1.8rem;
+  font-weight: 300;
 }
 
 .product-meta {
@@ -133,44 +176,49 @@ a { color: inherit; text-decoration: none; }
 }
 
 .tag {
-  font-size: .75rem;
-  padding: .35rem .8rem;
-  border-radius: 999px;
-  background: rgba(255,255,255,.08);
-  letter-spacing: .12em;
+  font-size: .65rem;
+  padding: .4rem 1rem;
+  border-radius: 2px;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: transparent;
+  letter-spacing: .2em;
 }
 
 .inquire {
-  font-weight: 600;
-  border-bottom: 1px solid #fff;
-  padding-bottom: 2px;
+  font-weight: 400;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border-bottom: 1px solid var(--accent-orange);
+  padding-bottom: 4px;
+  color: var(--accent-orange);
 }
 
 /* ================= STATEMENT ================= */
 .products-statement {
-  padding: 6rem 2rem;
+  padding: 10rem 2rem;
   text-align: center;
-  background: linear-gradient(
-    to bottom,
-    #0b0b0b,
-    #141414
-  );
-  border-top: 2px solid orange;
+  border-top: 1px solid rgba(255,255,255,0.1);
 }
 
 .products-statement p {
-  max-width: 720px;
+  max-width: 600px;
   margin: 0 auto;
-  font-size: 1.05rem;
-  line-height: 1.8;
-  color: #ddd;
+  font-size: 1.2rem;
+  font-weight: 300;
+  line-height: 2;
+  color: #eee;
+  font-style: italic; /* Makes it feel like a personal quote */
 }
 
 /* ================= FOOTER ================= */
 footer {
-  padding: 2rem;
+  padding: 4rem 2rem;
   text-align: center;
-  color: #666;
+  color: #444;
+  font-size: 0.7rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
 }
 </style>
 </head>
