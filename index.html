@@ -799,14 +799,8 @@ footer {
 </section>
 
 <footer>© Studio Grace</footer>
-
 <script>
-/* Mobile menu */
-function toggleMenu() {
-  document.getElementById("mobileMenu").classList.toggle("open");
-}
-
-/* Hero slider */
+// ================= HERO SLIDER =================
 const heroTrack = document.getElementById("heroTrack");
 let heroIndex = 0;
 setInterval(() => {
@@ -814,18 +808,16 @@ setInterval(() => {
   heroTrack.style.transform = `translateX(-${heroIndex * 100}%)`;
 }, 3500);
 
-/* Gallery logic */
+// ================= GALLERY SCROLL =================
 let galleryScrollX = 0;
-let galleryIndex = 0;
-
 function scrollGallery(direction) {
   const track = document.getElementById("galleryTrack");
   const container = track.parentElement;
   const scrollAmount = container.offsetWidth * 0.8;
 
   galleryScrollX += direction * scrollAmount;
-  const maxScroll = track.scrollWidth - container.offsetWidth;
 
+  const maxScroll = track.scrollWidth - container.offsetWidth;
   if (galleryScrollX < 0) galleryScrollX = 0;
   if (galleryScrollX > maxScroll) galleryScrollX = maxScroll;
 
@@ -834,21 +826,9 @@ function scrollGallery(direction) {
 }
 
 function updateArrowState(x, max) {
-  const leftArrow = document.getElementById("arrowLeft");
-  const rightArrow = document.getElementById("arrowRight");
-  if (!leftArrow || !rightArrow) return;
-  leftArrow.disabled = x <= 0;
-  rightArrow.disabled = x >= max;
+  document.getElementById("arrowLeft").disabled = x <= 0;
+  document.getElementById("arrowRight").disabled = x >= max;
 }
-
-function autoGallery() {
-  if (window.innerWidth > 768) return;
-  const track = document.getElementById("galleryTrack");
-  galleryIndex = (galleryIndex + 1) % track.children.length;
-  track.style.transform = `translateX(-${galleryIndex * 70}vw)`;
-}
-
-setInterval(autoGallery, 2800);
 
 window.addEventListener('load', () => {
   const track = document.getElementById("galleryTrack");
@@ -857,14 +837,39 @@ window.addEventListener('load', () => {
   updateArrowState(galleryScrollX, maxScroll);
 });
 
-/* Video sound control */
+// ================= MOBILE AUTO-SCROLL =================
+let galleryIndex = 0;
+function autoGallery() {
+  if (window.innerWidth > 768) return;
+  const track = document.getElementById("galleryTrack");
+  galleryIndex = (galleryIndex + 1) % track.children.length;
+  track.style.transform = `translateX(-${galleryIndex * 70}vw)`;
+}
+setInterval(autoGallery, 2800);
+
+// ================= MOBILE MENU =================
+function toggleMenu() {
+  document.getElementById("mobileMenu").classList.toggle("open");
+}
+
+// ================= SOUND TOGGLE =================
 function enableSound() {
   const iframe = document.getElementById("brandVideo");
-  if (iframe && iframe.src.includes("mute=1")) {
-    iframe.src = iframe.src.replace("mute=1", "mute=0");
-    document.querySelector(".sound-toggle").style.display = "none";
-  }
+  iframe.src = iframe.src.replace("mute=1", "mute=0");
+  document.querySelector(".sound-toggle").style.display = "none";
 }
+
+// ================= REVEAL ON SCROLL =================
+const revealItems = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.15 });
+
+revealItems.forEach(el => observer.observe(el));
 </script>
 
 </body>
