@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Products — Studio Grace</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #0b0b0b;
+  color: #fff;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* ================= HEADER ================= */
+.header {
+  padding: 1.8rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid orange;
+}
+
+.header h1 {
+  letter-spacing: .16em;
+  font-size: 1rem;
+}
+
+.header a {
+  padding: .5rem 1.2rem;
+  background: #fff;
+  color: #000;
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+/* ================= HERO ================= */
+.products-hero {
+  min-height: 70vh;
+  background: url("./Images/leather_background.jpg") center/cover no-repeat;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.products-hero::before {
+  content:"";
+  position:absolute;
+  inset:0;
+  background: rgba(0,0,0,.6);
+}
+
+.products-hero-content {
+  position: relative;
+  max-width: 900px;
+  padding: 2rem;
+}
+
+.products-hero h2 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  letter-spacing: .14em;
+  margin-bottom: 1.5rem;
+}
+
+.products-hero p {
+  max-width: 620px;
+  margin: 0 auto;
+  line-height: 1.7;
+  color: #ddd;
+}
+
+/* ================= PRODUCT GRID ================= */
+.products-section {
+  padding: 6rem 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 3rem;
+}
+
+.product-card {
+  background: #111;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow:
+    0 20px 50px rgba(0,0,0,.8),
+    inset 0 0 0 1px rgba(255,255,255,.06);
+  transition: transform .35s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-6px);
+}
+
+.product-card img {
+  width: 100%;
+  display: block;
+}
+
+.product-info {
+  padding: 1.8rem;
+}
+
+.product-info h3 {
+  font-size: 1.1rem;
+  letter-spacing: .1em;
+  margin-bottom: .6rem;
+}
+
+.product-info p {
+  font-size: .95rem;
+  line-height: 1.6;
+  color: #ccc;
+  margin-bottom: 1.4rem;
+}
+
+.product-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tag {
+  font-size: .75rem;
+  padding: .35rem .8rem;
+  border-radius: 999px;
+  background: rgba(255,255,255,.08);
+  letter-spacing: .12em;
+}
+
+.inquire {
+  font-weight: 600;
+  border-bottom: 1px solid #fff;
+  padding-bottom: 2px;
+}
+
+/* ================= STATEMENT ================= */
+.products-statement {
+  padding: 6rem 2rem;
+  text-align: center;
+  background: linear-gradient(
+    to bottom,
+    #0b0b0b,
+    #141414
+  );
+  border-top: 2px solid orange;
+}
+
+.products-statement p {
+  max-width: 720px;
+  margin: 0 auto;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #ddd;
+}
+
+/* ================= FOOTER ================= */
+footer {
+  padding: 2rem;
+  text-align: center;
+  color: #666;
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+  <h1>STUDIO GRACE</h1>
+  <a href="index.html">Back</a>
+</header>
+
+<section class="products-hero">
+  <div class="products-hero-content">
+    <h2>PRODUCTS</h2>
+    <p>
+      Each piece exists as a single expression.
+      No reproductions. No repeats.
+      Designed, constructed, and styled with intention.
+    </p>
+  </div>
+</section>
+
+<section class="products-section">
+  <div class="products-grid">
+
+    <!-- PRODUCT CARD -->
+    <article class="product-card">
+      <img src="./Images/Jean_Studio.png" alt="Custom Denim">
+      <div class="product-info">
+        <h3>Custom Denim</h3>
+        <p>Hand-altered denim constructed as a one-of-one garment. Built for character, wear, and longevity.</p>
+        <div class="product-meta">
+          <span class="tag">ONE OF ONE</span>
+          <span class="inquire">Inquire</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="product-card">
+      <img src="./Images/My Custom.png" alt="Custom Jacket">
+      <div class="product-info">
+        <h3>Custom Jacket</h3>
+        <p>Individually styled outerwear focused on silhouette, texture, and personal expression.</p>
+        <div class="product-meta">
+          <span class="tag">CUSTOM</span>
+          <span class="inquire">Inquire</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="product-card">
+      <img src="./Images/Blue_sweater_grace.png" alt="Sweater Piece">
+      <div class="product-info">
+        <h3>Sweater Piece</h3>
+        <p>Designed for comfort, movement, and subtle statement — crafted with intention.</p>
+        <div class="product-meta">
+          <span class="tag">ARCHIVE</span>
+          <span class="inquire">Inquire</span>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<section class="products-statement">
+  <p>
+    Studio Grace does not follow trends or seasonal drops.
+    Every garment is created as a singular piece — shaped by craft,
+    guided by instinct, and styled with precision.
+    <br><br>
+    If you’re here, you’re not shopping.
+    You’re selecting something personal.
+  </p>
+</section>
+
+<footer>
+  © Studio Grace
+</footer>
+
+</body>
+</html>
