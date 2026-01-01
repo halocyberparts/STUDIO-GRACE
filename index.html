@@ -617,5 +617,18 @@ function enableSound() {
   document.querySelector(".sound-toggle").style.display = "none";
 }
 </script>
+  <script>
+const revealItems = document.querySelectorAll('.reveal');
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.15 });
+
+revealItems.forEach(el => observer.observe(el));
+</script>
 </body>
 </html>
