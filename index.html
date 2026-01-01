@@ -400,17 +400,26 @@ setInterval(() => {
 <script>
 const galleryTrack = document.getElementById("galleryTrack");
 let galleryIndex = 0;
-const visibleCards = 3;
-const totalCards = galleryTrack.children.length;
-const maxGalleryIndex = totalCards - visibleCards;
 
 function slideGallery(dir) {
+  const viewport = document.querySelector(".gallery-viewport");
+  const card = galleryTrack.querySelector(".piece");
+  const gap = parseFloat(getComputedStyle(galleryTrack).gap) || 0;
+
+  const cardWidth = card.getBoundingClientRect().width;
+  const step = cardWidth + gap;
+
+  // how many full steps can we slide before we run out of track
+  const maxOffset = galleryTrack.scrollWidth - viewport.clientWidth;
+  const maxIndex = Math.max(0, Math.floor(maxOffset / step));
+
   galleryIndex += dir;
-  galleryIndex = Math.max(0, Math.min(galleryIndex, maxGalleryIndex));
- galleryTrack.style.transform =
-  `translateX(-${galleryIndex * 33.333}%)`;
+  galleryIndex = Math.max(0, Math.min(galleryIndex, maxIndex));
+
+  galleryTrack.style.transform = `translateX(-${galleryIndex * step}px)`;
 }
 </script>
+
 <script>
 function toggleMenu() {
   document.getElementById("mobileMenu").classList.toggle("open");
