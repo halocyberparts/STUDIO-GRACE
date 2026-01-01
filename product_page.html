@@ -11,48 +11,42 @@
 * { margin:0; padding:0; box-sizing:border-box; }
 
 :root {
-  --accent-orange: #ff6b00; /* A more "molten" orange */
+  --accent-orange: #ff6b00; 
   --bg-dark: #070707;
-  --card-bg: #111111;
 }
 
-body {
-  font-family: 'Inter', sans-serif;
-  /* This creates a soft glow in the center of the screen that follows the scroll */
-  background: radial-gradient(circle at 50% 30%, #1a1a1a 0%, #070707 70%);
-  background-attachment: fixed; 
-  color: #fff;
-  overflow-x: hidden;
+/* THE FIX: We use a fixed div for the background so the gradient is always visible */
+.bg-gradient-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* LUXURY GRADIENT: Deep Slate -> Pure Black -> Burnt Ember */
+  background: linear-gradient(
+    to bottom, 
+    #0f172a 0%,    /* Dark Slate Blue/Grey at the top */
+    #070707 50%,   /* Deep Black in the middle */
+    #2b1102 100%   /* Warm Burnt Ember at the very bottom */
+  );
+  z-index: -2; /* Sits behind everything */
 }
 
-/* Add a subtle "Noise" texture to make the color look like high-end fabric */
-body::after {
-  content: "";
+/* Texture Overlay */
+.bg-texture-layer {
   position: fixed;
   inset: 0;
   background-image: url("https://www.transparenttextures.com/patterns/carbon-fibre.png");
   opacity: 0.15;
   pointer-events: none;
-  z-index: 1;
+  z-index: -1; /* Sits on top of the gradient but behind content */
 }
 
-/* Update the statement section to feel like a "Close Up" on a spotlight */
-.products-statement {
-  padding: 10rem 2rem;
-  text-align: center;
-  background: radial-gradient(circle at center, #141414 0%, #070707 100%);
-  border-top: 1px solid rgba(255, 107, 0, 0.15);
-}
-
-/* Subtle texture overlay for the whole site */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
-  opacity: 0.03;
-  pointer-events: none;
-  z-index: 100;
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: transparent; /* Let the layers show through */
+  color: #fff;
+  overflow-x: hidden;
 }
 
 a { color: inherit; text-decoration: none; transition: 0.3s; }
@@ -63,37 +57,24 @@ a { color: inherit; text-decoration: none; transition: 0.3s; }
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* Glowing border instead of flat orange */
-  border-bottom: 1px solid rgba(255, 107, 0, 0.3);
-  box-shadow: 0 4px 30px rgba(255, 107, 0, 0.05);
+  border-bottom: 1px solid rgba(255, 107, 0, 0.2);
+  background: rgba(0,0,0,0.3); /* Slight tint for legibility */
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 .header h1 {
-  letter-spacing: .4em; /* Extra spacing for luxury feel */
+  letter-spacing: .4em;
   font-size: 0.85rem;
   font-weight: 300;
   text-transform: uppercase;
 }
 
-.header a {
-  padding: .5rem 1.5rem;
-  background: transparent;
-  color: #fff;
-  border: 1px solid #fff;
-  border-radius: 999px;
-  font-size: 0.75rem;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-}
-
-.header a:hover {
-  background: #fff;
-  color: #000;
-}
-
 /* ================= HERO ================= */
 .products-hero {
-  min-height: 85vh;
+  min-height: 80vh;
   background: url("./Images/leather_background.jpg") center/cover no-repeat;
   position: relative;
   display: flex;
@@ -102,40 +83,19 @@ a { color: inherit; text-decoration: none; transition: 0.3s; }
   text-align: center;
 }
 
-/* Darker, more cinematic gradient overlay */
 .products-hero::before {
   content:"";
   position:absolute;
   inset:0;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(7,7,7,1));
+  /* Fades the hero image into our page background */
+  background: linear-gradient(to bottom, rgba(0,0,0,0.2), transparent, rgba(7,7,7,1));
 }
 
-.products-hero-content {
-  position: relative;
-  max-width: 900px;
-  padding: 2rem;
-}
-
-.products-hero h2 {
-  font-size: clamp(3rem, 8vw, 6rem);
-  font-weight: 700;
-  letter-spacing: .2em;
-  margin-bottom: 1rem;
-  text-transform: uppercase;
-}
-
-.products-hero p {
-  max-width: 500px;
-  margin: 0 auto;
-  line-height: 1.8;
-  color: #aaa;
-  font-weight: 300;
-  letter-spacing: 0.05em;
-}
+.products-hero-content { position: relative; z-index: 2; }
 
 /* ================= PRODUCT GRID ================= */
 .products-section {
-  padding: 8rem 2rem;
+  padding: 6rem 2rem;
   max-width: 1400px;
   margin: 0 auto;
 }
@@ -143,100 +103,63 @@ a { color: inherit; text-decoration: none; transition: 0.3s; }
 .products-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 4rem; /* More breathing room */
+  gap: 4rem;
 }
 
-.product-card {
-  background: transparent; /* Cleaner look */
-  border-radius: 0; /* Sharp corners feel more high-fashion */
-  overflow: hidden;
-  transition: all .5s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.product-card:hover {
-  transform: translateY(-10px);
-}
+.product-card { transition: 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+.product-card:hover { transform: translateY(-10px); }
 
 .product-card img {
   width: 100%;
-  aspect-ratio: 4 / 5; /* Professional portrait ratio */
+  aspect-ratio: 4 / 5;
   object-fit: cover;
-  display: block;
-  filter: grayscale(20%); /* Artistic desaturation */
+  filter: grayscale(30%);
+  border: 1px solid rgba(255,255,255,0.1);
   transition: 0.5s;
 }
 
 .product-card:hover img {
   filter: grayscale(0%);
+  border-color: var(--accent-orange);
 }
 
-.product-info {
-  padding: 1.5rem 0; /* Padding only on top/bottom */
-}
-
-.product-info h3 {
-  font-size: 1.2rem;
-  font-weight: 600;
-  letter-spacing: .15em;
-  margin-bottom: .8rem;
-  text-transform: uppercase;
-}
-
-.product-info p {
-  font-size: .9rem;
-  line-height: 1.7;
-  color: #888;
-  margin-bottom: 1.8rem;
-  font-weight: 300;
-}
-
-.product-meta {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+.product-info { padding: 1.5rem 0; }
+.product-info h3 { letter-spacing: .15em; text-transform: uppercase; margin-bottom: 0.5rem;}
+.product-info p { color: #888; font-weight: 300; margin-bottom: 1.5rem; }
 
 .tag {
-  font-size: .65rem;
-  padding: .4rem 1rem;
-  border-radius: 2px;
+  font-size: .6rem;
+  padding: .4rem .8rem;
   border: 1px solid rgba(255,255,255,0.2);
-  background: transparent;
   letter-spacing: .2em;
 }
 
 .inquire {
-  font-weight: 400;
+  color: var(--accent-orange);
+  border-bottom: 1px solid var(--accent-orange);
   font-size: 0.8rem;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  border-bottom: 1px solid var(--accent-orange);
-  padding-bottom: 4px;
-  color: var(--accent-orange);
 }
 
 /* ================= STATEMENT ================= */
 .products-statement {
-  padding: 10rem 2rem;
+  padding: 8rem 2rem;
   text-align: center;
-  border-top: 1px solid rgba(255,255,255,0.1);
 }
 
 .products-statement p {
   max-width: 600px;
   margin: 0 auto;
-  font-size: 1.2rem;
-  font-weight: 300;
+  font-size: 1.1rem;
   line-height: 2;
-  color: #eee;
-  font-style: italic; /* Makes it feel like a personal quote */
+  font-style: italic;
+  color: #ccc;
 }
 
-/* ================= FOOTER ================= */
 footer {
   padding: 4rem 2rem;
   text-align: center;
-  color: #444;
+  color: #555;
   font-size: 0.7rem;
   letter-spacing: 0.3em;
   text-transform: uppercase;
@@ -246,32 +169,31 @@ footer {
 
 <body>
 
+<div class="bg-gradient-layer"></div>
+<div class="bg-texture-layer"></div>
+
 <header class="header">
   <h1>STUDIO GRACE</h1>
-  <a href="index.html">Back</a>
+  <a href="index.html" style="padding: .5rem 1.5rem; border: 1px solid #fff; border-radius: 999px; font-size: 0.75rem;">Back</a>
 </header>
 
 <section class="products-hero">
   <div class="products-hero-content">
-    <h2>PRODUCTS</h2>
-    <p>
-      Each piece exists as a single expression.
-      No reproductions. No repeats.
-      Designed, constructed, and styled with intention.
+    <h2 style="font-size: clamp(3rem, 8vw, 6rem); letter-spacing: .2em; text-transform: uppercase;">PRODUCTS</h2>
+    <p style="max-width: 500px; margin: 0 auto; color: #aaa; font-weight: 300;">
+      One-of-one expressions. Designed with intention.
     </p>
   </div>
 </section>
 
 <section class="products-section">
   <div class="products-grid">
-
-    <!-- PRODUCT CARD -->
     <article class="product-card">
       <img src="./Images/Jean_Studio.png" alt="Custom Denim">
       <div class="product-info">
         <h3>Custom Denim</h3>
-        <p>Hand-altered denim constructed as a one-of-one garment. Built for character, wear, and longevity.</p>
-        <div class="product-meta">
+        <p>Hand-altered denim constructed as a one-of-one garment.</p>
+        <div style="display:flex; justify-content:space-between; align-items:center;">
           <span class="tag">ONE OF ONE</span>
           <span class="inquire">Inquire</span>
         </div>
@@ -282,8 +204,8 @@ footer {
       <img src="./Images/My Custom.png" alt="Custom Jacket">
       <div class="product-info">
         <h3>Custom Jacket</h3>
-        <p>Individually styled outerwear focused on silhouette, texture, and personal expression.</p>
-        <div class="product-meta">
+        <p>Individually styled outerwear focused on silhouette.</p>
+        <div style="display:flex; justify-content:space-between; align-items:center;">
           <span class="tag">CUSTOM</span>
           <span class="inquire">Inquire</span>
         </div>
@@ -294,25 +216,20 @@ footer {
       <img src="./Images/Blue_sweater_grace.png" alt="Sweater Piece">
       <div class="product-info">
         <h3>Sweater Piece</h3>
-        <p>Designed for comfort, movement, and subtle statement — crafted with intention.</p>
-        <div class="product-meta">
+        <p>Designed for comfort, movement, and subtle statement.</p>
+        <div style="display:flex; justify-content:space-between; align-items:center;">
           <span class="tag">ARCHIVE</span>
           <span class="inquire">Inquire</span>
         </div>
       </div>
     </article>
-
   </div>
 </section>
 
 <section class="products-statement">
   <p>
-    Studio Grace does not follow trends or seasonal drops.
-    Every garment is created as a singular piece — shaped by craft,
-    guided by instinct, and styled with precision.
-    <br><br>
-    If you’re here, you’re not shopping.
-    You’re selecting something personal.
+    Studio Grace does not follow trends.<br>
+    Every garment is a singular piece shaped by craft.
   </p>
 </section>
 
