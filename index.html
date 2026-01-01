@@ -899,5 +899,37 @@ function autoGallery() {
 }
 setInterval(autoGallery, 2800);
 </script>  
+<script>
+let galleryScrollX = 0;
+
+function scrollGallery(direction) {
+  const track = document.getElementById("galleryTrack");
+  const container = track.parentElement;
+  const scrollAmount = container.offsetWidth * 0.8;
+
+  galleryScrollX += direction * scrollAmount;
+
+  const maxScroll = track.scrollWidth - container.offsetWidth;
+
+  if (galleryScrollX < 0) galleryScrollX = 0;
+  if (galleryScrollX > maxScroll) galleryScrollX = maxScroll;
+
+  track.style.transform = `translateX(-${galleryScrollX}px)`;
+  updateArrowState(galleryScrollX, maxScroll);
+}
+
+function updateArrowState(x, max) {
+  document.getElementById("arrowLeft").disabled = x <= 0;
+  document.getElementById("arrowRight").disabled = x >= max;
+}
+
+// Initialize state on page load
+window.addEventListener('load', () => {
+  const track = document.getElementById("galleryTrack");
+  const container = track.parentElement;
+  const maxScroll = track.scrollWidth - container.offsetWidth;
+  updateArrowState(galleryScrollX, maxScroll);
+});
+</script>  
 </body>
 </html>
