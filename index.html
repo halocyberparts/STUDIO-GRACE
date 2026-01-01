@@ -5,14 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Studio Grace — One-of-One Garments</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
 
 body {
   font-family: 'Inter', sans-serif;
-  color: #fff;
+  color:#fff;
   background: linear-gradient(
     to bottom,
     dodgerblue 0%,
@@ -20,10 +20,7 @@ body {
     #5a3e2b 70%,
     #3a2416 100%
   );
-  min-height: 100vh;
 }
-
-a { text-decoration:none; color:inherit; }
 
 /* ================= HEADER ================= */
 .site-header {
@@ -35,7 +32,7 @@ a { text-decoration:none; color:inherit; }
 .header-top {
   height:34px;
   background:url("./Images/Levy_Thread.png") center/cover no-repeat;
-  border-bottom: 3px solid orange;
+  border-bottom:3px solid orange;
 }
 
 .header-bottom {
@@ -54,7 +51,7 @@ a { text-decoration:none; color:inherit; }
 
 .logo {
   font-weight:700;
-  letter-spacing:.14em;
+  letter-spacing:.16em;
 }
 
 .main-nav a {
@@ -76,7 +73,7 @@ a { text-decoration:none; color:inherit; }
 .hero-track {
   display:flex;
   height:100%;
-  transition:transform .8s ease;
+  transition:transform 0.9s cubic-bezier(.4,0,.2,1);
 }
 
 .hero-slide {
@@ -88,7 +85,7 @@ a { text-decoration:none; color:inherit; }
   width:100%;
   height:100%;
   object-fit:cover;
-  opacity:.75;
+  opacity:.78;
 }
 
 .hero-content {
@@ -98,15 +95,7 @@ a { text-decoration:none; color:inherit; }
   flex-direction:column;
   justify-content:center;
   align-items:center;
-  background: rgba(0,0,0,.26);
-}
-
-.hero-btn {
-  margin-top:1.2rem;
-  padding:.8rem 2rem;
-  border:2px solid #fff;
-  border-radius:999px;
-  font-weight:600;
+  background:rgba(0,0,0,.28);
 }
 
 /* ================= BRAND ================= */
@@ -131,7 +120,7 @@ a { text-decoration:none; color:inherit; }
 
 .brand-inner h2 {
   font-size:clamp(2.5rem,5vw,4rem);
-  letter-spacing:.1em;
+  letter-spacing:.14em;
 }
 
 /* ================= GALLERY ================= */
@@ -150,7 +139,7 @@ a { text-decoration:none; color:inherit; }
 .gallery-track {
   display:flex;
   gap:2rem;
-  transition:transform .6s ease;
+  transition:transform .7s ease;
 }
 
 .piece {
@@ -165,18 +154,6 @@ a { text-decoration:none; color:inherit; }
   display:block;
 }
 
-.piece figcaption {
-  position:absolute;
-  bottom:0;
-  width:100%;
-  padding:1rem;
-  background:linear-gradient(to top, rgba(0,0,0,.8), transparent);
-  opacity:0;
-  transition:.3s ease;
-}
-
-.piece:hover figcaption { opacity:1; }
-
 .gallery-arrow {
   position:absolute;
   top:50%;
@@ -187,7 +164,11 @@ a { text-decoration:none; color:inherit; }
   height:48px;
   border-radius:50%;
   font-size:2rem;
+  cursor:pointer;
 }
+
+.gallery-arrow.left { left:1rem; }
+.gallery-arrow.right { right:1rem; }
 
 /* ================= ABOUT ================= */
 .about {
@@ -225,33 +206,47 @@ a { text-decoration:none; color:inherit; }
   }
 }
 
+.about-story {
+  text-align:center;
+}
+
 .about-story h3 {
-  letter-spacing:.12em;
-  margin-bottom:2rem;
+  font-size:clamp(1.7rem,3vw,2.4rem);
+  letter-spacing:.22em;
+  font-weight:500;
+  text-transform:uppercase;
+  margin-bottom:2.8rem;
 }
 
 .about-story p {
-  line-height:1.7;
-  margin-bottom:1.4rem;
-  color:#ddd;
+  max-width:640px;
+  margin:0 auto 1.8rem;
+  font-size:1.05rem;
+  line-height:1.9;
+  color:rgba(255,255,255,.88);
+  font-weight:300;
 }
 
 .about-signature {
-  font-weight:600;
-  letter-spacing:.08em;
+  margin-top:3rem;
+  font-size:.9rem;
+  letter-spacing:.28em;
+  text-transform:uppercase;
+  opacity:.75;
 }
 
-.about-video video {
+/* ================= VIDEO ================= */
+.about-video {
+  display:flex;
+  justify-content:center;
+}
+
+.about-video iframe {
   width:100%;
-  border-radius:16px;
-  box-shadow:0 20px 60px rgba(0,0,0,.6);
-}
-
-/* ================= FOOTER ================= */
-footer {
-  padding:2rem;
-  text-align:center;
-  color:#555;
+  max-width:980px;
+  aspect-ratio:16/9;
+  border-radius:18px;
+  box-shadow:0 30px 80px rgba(0,0,0,.7);
 }
 
 /* ================= MOBILE ================= */
@@ -269,7 +264,7 @@ footer {
   <div class="header-bottom">
     <div class="nav-inner">
       <div class="logo">STUDIO GRACE</div>
-      <nav class="main-nav desktop-nav">
+      <nav class="main-nav">
         <a href="#gallery">Gallery</a>
         <a href="#about">About</a>
       </nav>
@@ -290,52 +285,78 @@ footer {
 </section>
 
 <section id="gallery" class="gallery-section">
+  <button class="gallery-arrow left" onclick="slideGallery(-1)">‹</button>
   <div class="gallery-viewport">
     <div class="gallery-track" id="galleryTrack">
       <figure class="piece"><img src="./Images/Jean_Studio.png"></figure>
       <figure class="piece"><img src="./Images/My Custom.png"></figure>
       <figure class="piece"><img src="./Images/Blue_sweater_grace.png"></figure>
+      <figure class="piece"><img src="./Images/shirt_redbackground.png"></figure>
     </div>
   </div>
+  <button class="gallery-arrow right" onclick="slideGallery(1)">›</button>
 </section>
 
 <section id="about" class="about">
   <p>Each garment exists once. No reproductions.</p>
 </section>
-  <section>
+
+<section class="about-body">
+  <div class="about-body-inner">
     <div class="about-story">
       <h3>About the Designer</h3>
       <p>Grace Collection was built from persistence, skill, and respect for craft.</p>
       <p>Each garment is created as a one-of-one expression — intentional, balanced, and honest.</p>
-      <p class="about-signature">
-        Crafted with purpose.<br>Styled with intention.
-      </p>
+      <p class="about-signature">Crafted with purpose · Styled with intention</p>
     </div>
-  </section>
-<section id="about-body" class="about-body">
-  <div class="about-body-inner">
 
     <div class="about-video">
-  <div class="video-embed">
-    <iframe
-      src="https://www.youtube.com/embed/Ju9aQjM4nio"
-      title="Grace Collection — Crafted With Intention"
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      referrerpolicy="strict-origin-when-cross-origin"
-      allowfullscreen>
-    </iframe>
+      <iframe src="https://www.youtube.com/embed/Ju9aQjM4nio" allowfullscreen></iframe>
+    </div>
   </div>
-</div>
 </section>
 
 <footer>© Studio Grace</footer>
 
 <script>
-const heroTrack=document.getElementById("heroTrack");
-let heroIndex=0;
-setInterval(()=>{heroIndex=(heroIndex+1)%heroTrack.children.length;
-heroTrack.style.transform=`translateX(-${heroIndex*100}%)`;},5000);
+/* HERO — faster */
+const heroTrack = document.getElementById("heroTrack");
+let heroIndex = 0;
+setInterval(() => {
+  heroIndex = (heroIndex + 1) % heroTrack.children.length;
+  heroTrack.style.transform = `translateX(-${heroIndex * 100}%)`;
+}, 3800);
+
+/* GALLERY — auto + manual */
+const galleryTrack = document.getElementById("galleryTrack");
+let galleryIndex = 0;
+let galleryTimer;
+
+function slideGallery(dir) {
+  const card = galleryTrack.children[0];
+  const step = card.offsetWidth + 32;
+  galleryIndex += dir;
+  const max = galleryTrack.children.length - 3;
+  galleryIndex = Math.max(0, Math.min(galleryIndex, max));
+  galleryTrack.style.transform = `translateX(-${galleryIndex * step}px)`;
+  resetGalleryAuto();
+}
+
+function startGalleryAuto() {
+  galleryTimer = setInterval(() => {
+    galleryIndex++;
+    if (galleryIndex > galleryTrack.children.length - 3) galleryIndex = 0;
+    const step = galleryTrack.children[0].offsetWidth + 32;
+    galleryTrack.style.transform = `translateX(-${galleryIndex * step}px)`;
+  }, 2600);
+}
+
+function resetGalleryAuto() {
+  clearInterval(galleryTimer);
+  startGalleryAuto();
+}
+
+startGalleryAuto();
 </script>
 
 </body>
