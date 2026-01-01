@@ -600,17 +600,16 @@ footer {
 
 <section id="gallery" class="gallery-section">
   <div class="gallery-viewport">
+    <button class="gallery-arrow left" onclick="scrollGallery(-1)">‹</button>
+    
     <div class="gallery-track" id="galleryTrack">
       <figure class="piece"><img src="./Images/Jean_Studio.png"></figure>
       <figure class="piece"><img src="./Images/My Custom.png"></figure>
       <figure class="piece"><img src="./Images/Blue_sweater_grace.png"></figure>
       <figure class="piece"><img src="./Images/Whitebackground_Redsweater_Grace.jpg"></figure>
     </div>
-  </div>
 
-  <div class="gallery-arrows">
-    <button onclick="scrollGallery(-1)">‹</button>
-    <button onclick="scrollGallery(1)">›</button>
+    <button class="gallery-arrow right" onclick="scrollGallery(1)">›</button>
   </div>
 </section>
 
