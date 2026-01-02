@@ -26,82 +26,83 @@ body {
 .main-nav a { background: #fff; color: #000; padding: .55rem 1.2rem; border-radius: 999px; font-weight: 600; margin-left: .6rem; text-decoration: none; }
 .nav-toggle { display: none; font-size: 2rem; background: none; border: none; color: #fff; cursor: pointer; }
 
-/* ================= HERO ================= */
+/* ================= MOBILE NAV ================= */
+@media (max-width: 900px) { .main-nav { display: none; } .nav-toggle { display: block; } }
+
+/* .mobile-menu {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 75%;
+  height: 100vh;
+  background: #000;
+  padding: 10rem 2rem 2rem 2rem; 
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  transition: right .4s ease;
+  z-index: 999;
+  box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+} */
+
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 75%;
+  height: 100vh;
+  /* RESTORED: Your orange-to-transparent gradient */
+  background: linear-gradient(45deg, orange, transparent);
+  /* Keeping the blur makes the orange look high-end */
+  backdrop-filter: blur(8px); 
+  
+  /* Lowered padding to push buttons down below the header */
+  padding: 10rem 2rem 2rem 2rem; 
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  transition: right .4s ease;
+  z-index: 999;
+  box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+}
+
+.mobile-menu.open { right: 0; }
+
+.mobile-menu a { 
+  background: #fff; 
+  color: #000; 
+  padding: 1rem; 
+  border-radius: 999px; 
+  text-align: center; 
+  text-decoration: none; 
+  font-weight: 600; 
+}
+
+.menu-close {
+  position: absolute;
+  top: 85px; /* Manually lowered below the header thread */
+  right: 25px;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 2.5rem;
+  cursor: pointer;
+  line-height: 1;
+  z-index: 1001;
+}
+
+/* ================= HERO & OTHER SECTIONS ================= */
 .hero { height: 75vh; overflow: hidden; position: relative; } 
 @media (min-width: 769px) { .hero { height: 100vh; } }
 .hero-track { display: flex; height: 100%; transition: transform .6s ease; }
 .hero-slide { min-width: 100%; }
 .hero-slide img { width: 100%; height: 100%; object-fit: cover; opacity: .85; }
 
-/* ================= GALLERY ================= */
 .gallery-section { background: #000; padding: 4rem 1rem; border-top: 2px solid skyblue; }
 .gallery-viewport { position: relative; overflow: hidden; max-width: 1400px; margin: 0 auto; }
 .gallery-track { display: flex; gap: 15px; transition: transform .5s ease; padding: 10px 0; }
 .piece { flex: 0 0 75vw; max-width: 420px; aspect-ratio: 3 / 4; overflow: hidden; border-radius: 8px; }
-@media (min-width: 769px) { .piece { flex: 0 0 350px; } }
 .piece img { width: 100%; height: 100%; object-fit: cover; display: block; }
-
-/* ================= PRODUCT GATEWAY ================= */
-.product-gateway {
-  padding: 5rem 1.5rem;
-  background: linear-gradient(to bottom, rgba(20, 20, 20, 0.85), rgba(10, 10, 10, 0.95));
-  text-align: center;
-  border-top: 2px solid orange;
-  border-bottom: 2px solid orange;
-}
-.product-btn {
-  display: inline-block;
-  padding: 1.2rem 4rem;
-  font-size: 1.1rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  font-weight: 700;
-  color: #000;
-  background: #fff;
-  border-radius: 999px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
-  transition: all 0.35s ease;
-  text-decoration: none;
-}
-.product-btn:hover { transform: translateY(-3px); background: #f5f5f5; }
-
-/* ================= ABOUT & VIDEO ================= */
-.about-body { background: #0a0a0a; padding: 6rem 1.5rem; }
-.about-body-inner { max-width: 1200px; margin: 0 auto; display: grid; gap: 4rem; }
-@media (min-width: 900px) { .about-body-inner { grid-template-columns: 1fr 1fr; align-items: center; } }
-.about-video { position: relative; display: flex; align-items: center; width: 100%; }
-.video-wrapper { position: relative; width: 100%; padding-bottom: 56.25%; height: 0; flex-grow: 1; }
-.video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 12px; }
-
-.sound-banner {
-  position: absolute;
-  right: -35px;
-  top: 50%;
-  transform: translateY(-50%) rotate(90deg);
-  background: #fff; color: #000; padding: 12px 25px;
-  font-weight: 700; font-size: 0.75rem; letter-spacing: 0.2em;
-  text-transform: uppercase; border-radius: 0 0 15px 15px;
-  cursor: pointer; z-index: 20; white-space: nowrap; transition: 0.5s ease;
-}
-.sound-banner.hidden { transform: translateY(-50%) rotate(90deg) translateY(100px); opacity: 0; pointer-events: none; }
-
-/* ================= CONTACT ================= */
-.contact-section { background: #050505; padding: 5rem 1.5rem; text-align: center; }
-.contact-form { display: flex; flex-direction: column; gap: 1rem; max-width: 600px; margin: 0 auto; }
-.contact-form input, .contact-form textarea { width: 100%; padding: 1rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: #fff; border-radius: 8px; }
-.contact-btn { padding: 1rem; border-radius: 999px; background: #fff; font-weight: 600; text-transform: uppercase; cursor: pointer; }
-
-/* ================= MOBILE NAV ================= */
-@media (max-width: 900px) { .main-nav { display: none; } .nav-toggle { display: block; } }
-.mobile-menu { position: fixed; top: 0; right: -100%; width: 75%; height: 100vh; background: linear-gradient(45deg, orange, transparent); padding: 5rem 2rem; display: flex; flex-direction: column; gap: 1.5rem; transition: right .4s ease; z-index: 999; box-shadow: -10px 0 30px rgba(0,0,0,0.5); }
-.mobile-menu.open { right: 0; }
-.mobile-menu a { background: #fff; color: #000; padding: 1rem; border-radius: 999px; text-align: center; text-decoration: none; font-weight: 600; }
-
-.menu-close {
-  position: absolute; top: 20px; right: 25px;
-  background: none; border: none; color: #fff;
-  font-size: 2.5rem; cursor: pointer; line-height: 1; padding: 10px;
-}
 
 footer { padding: 2rem; text-align: center; color: #444; font-size: 0.8rem; }
 </style>
@@ -150,54 +151,16 @@ footer { padding: 2rem; text-align: center; color: #444; font-size: 0.8rem; }
   </div>
 </section>
 
-<section class="product-gateway">
-  <a href="./product_page.html" class="product-btn">Products</a>
-</section>
-
-<section class="about-body" id="about">
-  <div class="about-body-inner">
-    <div class="about-story">
-      <h3 style="letter-spacing: .2em; text-transform: uppercase; margin-bottom: 2rem;">About the Designer</h3>
-      <p style="margin-bottom: 1.5rem; color: #ccc; font-weight: 300; line-height: 1.8;">
-        Grace Collection was built through persistence and a deep respect for craft. Every garment is created as a one-of-one piece.
-      </p>
-    </div>
-    <div class="about-video">
-      <div class="video-wrapper">
-        <iframe id="brandVideo" src="https://www.youtube.com/embed/Ju9aQjM4nio?autoplay=1&mute=1&controls=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-      </div>
-      <div class="sound-banner" id="soundBanner" onclick="enableSound()">
-        <i class="fa-solid fa-volume-high"></i> Enable Sound
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="contact-section">
-  <form class="contact-form">
-    <input type="text" placeholder="Name" required>
-    <input type="email" placeholder="Email" required>
-    <textarea rows="4" placeholder="Message"></textarea>
-    <button type="submit" class="contact-btn">Send</button>
-  </form>
-</section>
-
 <footer>© Studio Grace</footer>
 
 <script>
-// UNIFIED TOGGLE FUNCTION
 function toggleMenu() {
   const menu = document.getElementById("mobileMenu");
   menu.classList.toggle("open");
-  
-  if (menu.classList.contains("open")) {
-    document.body.style.overflow = "hidden";
-  } else {
-    document.body.style.overflow = "auto";
-  }
+  document.body.style.overflow = menu.classList.contains("open") ? "hidden" : "auto";
 }
 
-// CLOSE IF CLICKED OUTSIDE
+// Close if clicked outside the white buttons
 window.addEventListener('click', function(e) {
   const menu = document.getElementById("mobileMenu");
   const navToggle = document.querySelector(".nav-toggle");
@@ -206,31 +169,15 @@ window.addEventListener('click', function(e) {
   }
 });
 
-// HERO SLIDER
+// Auto-sliders
 const heroTrack = document.getElementById("heroTrack");
 let heroIndex = 0;
 setInterval(() => {
-  heroIndex = (heroIndex + 1) % heroTrack.children.length;
-  heroTrack.style.transform = `translateX(-${heroIndex * 100}%)`;
-}, 4000);
-
-// VIDEO SOUND
-function enableSound() {
-  const iframe = document.getElementById("brandVideo");
-  const banner = document.getElementById("soundBanner");
-  iframe.src = "https://www.youtube.com/embed/Ju9aQjM4nio?autoplay=1&mute=0&controls=1";
-  banner.classList.add("hidden");
-}
-
-// GALLERY SLIDER
-let gallIdx = 0;
-setInterval(() => {
-  if (window.innerWidth <= 768) {
-    const track = document.getElementById("galleryTrack");
-    gallIdx = (gallIdx + 1) % track.children.length;
-    track.style.transform = `translateX(-${gallIdx * 78}vw)`;
+  if(heroTrack) {
+    heroIndex = (heroIndex + 1) % heroTrack.children.length;
+    heroTrack.style.transform = `translateX(-${heroIndex * 100}%)`;
   }
-}, 3200);
+}, 4000);
 </script>
 </body>
 </html>
