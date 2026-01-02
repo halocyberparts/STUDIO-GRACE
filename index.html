@@ -26,7 +26,7 @@ body {
 .main-nav a { background: #fff; color: #000; padding: .55rem 1.2rem; border-radius: 999px; font-weight: 600; margin-left: .6rem; text-decoration: none; }
 .nav-toggle { display: none; font-size: 2rem; background: none; border: none; color: #fff; cursor: pointer; }
 
-/* ================= HERO (Mobile Optimized) ================= */
+/* ================= HERO ================= */
 .hero { height: 75vh; overflow: hidden; position: relative; } 
 @media (min-width: 769px) { .hero { height: 100vh; } }
 .hero-track { display: flex; height: 100%; transition: transform .6s ease; }
@@ -41,7 +41,7 @@ body {
 @media (min-width: 769px) { .piece { flex: 0 0 350px; } }
 .piece img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-/* ================= PRODUCT GATEWAY (RESTORED) ================= */
+/* ================= PRODUCT GATEWAY ================= */
 .product-gateway {
   padding: 5rem 1.5rem;
   background: linear-gradient(to bottom, rgba(20, 20, 20, 0.85), rgba(10, 10, 10, 0.95));
@@ -69,30 +69,19 @@ body {
 .about-body { background: #0a0a0a; padding: 6rem 1.5rem; }
 .about-body-inner { max-width: 1200px; margin: 0 auto; display: grid; gap: 4rem; }
 @media (min-width: 900px) { .about-body-inner { grid-template-columns: 1fr 1fr; align-items: center; } }
-
 .about-video { position: relative; display: flex; align-items: center; width: 100%; }
 .video-wrapper { position: relative; width: 100%; padding-bottom: 56.25%; height: 0; flex-grow: 1; }
 .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 12px; }
 
-/* SIDE BANNER FOR AUDIO */
 .sound-banner {
   position: absolute;
   right: -35px;
   top: 50%;
   transform: translateY(-50%) rotate(90deg);
-  background: #fff;
-  color: #000;
-  padding: 12px 25px;
-  font-weight: 700;
-  font-size: 0.75rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  border-radius: 0 0 15px 15px;
-  cursor: pointer;
-  z-index: 20;
-  white-space: nowrap;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-  transition: 0.5s ease;
+  background: #fff; color: #000; padding: 12px 25px;
+  font-weight: 700; font-size: 0.75rem; letter-spacing: 0.2em;
+  text-transform: uppercase; border-radius: 0 0 15px 15px;
+  cursor: pointer; z-index: 20; white-space: nowrap; transition: 0.5s ease;
 }
 .sound-banner.hidden { transform: translateY(-50%) rotate(90deg) translateY(100px); opacity: 0; pointer-events: none; }
 
@@ -104,9 +93,15 @@ body {
 
 /* ================= MOBILE NAV ================= */
 @media (max-width: 900px) { .main-nav { display: none; } .nav-toggle { display: block; } }
-.mobile-menu { position: fixed; top: 0; right: -100%; width: 75%; height: 100vh; background: #000; padding: 5rem 2rem; display: flex; flex-direction: column; gap: 1.5rem; transition: right .4s ease; z-index: 999; }
+.mobile-menu { position: fixed; top: 0; right: -100%; width: 75%; height: 100vh; background: #000; padding: 5rem 2rem; display: flex; flex-direction: column; gap: 1.5rem; transition: right .4s ease; z-index: 999; box-shadow: -10px 0 30px rgba(0,0,0,0.5); }
 .mobile-menu.open { right: 0; }
 .mobile-menu a { background: #fff; color: #000; padding: 1rem; border-radius: 999px; text-align: center; text-decoration: none; font-weight: 600; }
+
+.menu-close {
+  position: absolute; top: 20px; right: 25px;
+  background: none; border: none; color: #fff;
+  font-size: 2.5rem; cursor: pointer; line-height: 1; padding: 10px;
+}
 
 footer { padding: 2rem; text-align: center; color: #444; font-size: 0.8rem; }
 </style>
@@ -129,9 +124,10 @@ footer { padding: 2rem; text-align: center; color: #444; font-size: 0.8rem; }
 </header>
 
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#gallery" onclick="toggleMenu()">Gallery</a>
-  <a href="#about" onclick="toggleMenu()">About</a>
-  <a href="./product_page.html" onclick="toggleMenu()">Products</a>
+    <button class="menu-close" onclick="toggleMenu()">✕</button> 
+    <a href="#gallery" onclick="toggleMenu()">Gallery</a>
+    <a href="#about" onclick="toggleMenu()">About</a>
+    <a href="./product_page.html" onclick="toggleMenu()">Products</a>
 </div>
 
 <section class="hero">
@@ -163,11 +159,9 @@ footer { padding: 2rem; text-align: center; color: #444; font-size: 0.8rem; }
     <div class="about-story">
       <h3 style="letter-spacing: .2em; text-transform: uppercase; margin-bottom: 2rem;">About the Designer</h3>
       <p style="margin-bottom: 1.5rem; color: #ccc; font-weight: 300; line-height: 1.8;">
-        Grace Collection was built through persistence and a deep respect for craft. Every garment is created as a one-of-one piece. Denim, jackets, and custom works are designed individually.
+        Grace Collection was built through persistence and a deep respect for craft. Every garment is created as a one-of-one piece.
       </p>
-      <p style="color: #666; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.2em;">Crafted with purpose · Styled with intention</p>
     </div>
-
     <div class="about-video">
       <div class="video-wrapper">
         <iframe id="brandVideo" src="https://www.youtube.com/embed/Ju9aQjM4nio?autoplay=1&mute=1&controls=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
@@ -180,20 +174,39 @@ footer { padding: 2rem; text-align: center; color: #444; font-size: 0.8rem; }
 </section>
 
 <section class="contact-section">
-  <div class="contact-inner">
-    <h3 style="letter-spacing: .3em; text-transform: uppercase; margin-bottom: 2rem;">Inquiries</h3>
-    <form class="contact-form">
-      <input type="text" placeholder="Name" required>
-      <input type="email" placeholder="Email" required>
-      <textarea rows="4" placeholder="Message"></textarea>
-      <button type="submit" class="contact-btn">Send</button>
-    </form>
-  </div>
+  <form class="contact-form">
+    <input type="text" placeholder="Name" required>
+    <input type="email" placeholder="Email" required>
+    <textarea rows="4" placeholder="Message"></textarea>
+    <button type="submit" class="contact-btn">Send</button>
+  </form>
 </section>
 
 <footer>© Studio Grace</footer>
 
 <script>
+// UNIFIED TOGGLE FUNCTION
+function toggleMenu() {
+  const menu = document.getElementById("mobileMenu");
+  menu.classList.toggle("open");
+  
+  if (menu.classList.contains("open")) {
+    document.body.style.overflow = "hidden";
+  } else {
+    document.body.style.overflow = "auto";
+  }
+}
+
+// CLOSE IF CLICKED OUTSIDE
+window.addEventListener('click', function(e) {
+  const menu = document.getElementById("mobileMenu");
+  const navToggle = document.querySelector(".nav-toggle");
+  if (menu.classList.contains("open") && !menu.contains(e.target) && e.target !== navToggle) {
+    toggleMenu();
+  }
+});
+
+// HERO SLIDER
 const heroTrack = document.getElementById("heroTrack");
 let heroIndex = 0;
 setInterval(() => {
@@ -201,8 +214,7 @@ setInterval(() => {
   heroTrack.style.transform = `translateX(-${heroIndex * 100}%)`;
 }, 4000);
 
-function toggleMenu() { document.getElementById("mobileMenu").classList.toggle("open"); }
-
+// VIDEO SOUND
 function enableSound() {
   const iframe = document.getElementById("brandVideo");
   const banner = document.getElementById("soundBanner");
@@ -210,6 +222,7 @@ function enableSound() {
   banner.classList.add("hidden");
 }
 
+// GALLERY SLIDER
 let gallIdx = 0;
 setInterval(() => {
   if (window.innerWidth <= 768) {
