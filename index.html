@@ -321,7 +321,22 @@ function enableSound() {
 
   iframe.src = "https://www.youtube.com/embed/Ju9aQjM4nio?autoplay=1&mute=0";
   banner.style.display = "none";
-}
-</script>
+  }
+  /*================About-Story===============*/
+  const fadeEls = document.querySelectorAll(".fade-in");
+
+const fadeObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+      }
+    });
+  },
+  { threshold: 0.15 }
+);
+
+fadeEls.forEach(el => fadeObserver.observe(el));
+</script>  
 </body>
 </html>
