@@ -183,47 +183,74 @@ body {
   </div>
   <p class="copyright">© STUDIO GRACE 2026</p>
 </footer>
-
 <script>
+/* ================= MOBILE MENU ================= */
 function toggleMenu() {
   const menu = document.getElementById("mobileMenu");
   menu.classList.toggle("open");
   document.body.style.overflow = menu.classList.contains("open") ? "hidden" : "auto";
 }
 
-window.addEventListener('click', function(e) {
+window.addEventListener("click", (e) => {
   const menu = document.getElementById("mobileMenu");
-  const navToggle = document.querySelector(".nav-toggle");
-  if (menu.classList.contains("open") && !menu.contains(e.target) && e.target !== navToggle) {
+  const toggle = document.querySelector(".nav-toggle");
+
+  if (
+    menu.classList.contains("open") &&
+    !menu.contains(e.target) &&
+    !toggle.contains(e.target)
+  ) {
     toggleMenu();
   }
 });
 
+/* ================= HERO SLIDER ================= */
 const heroTrack = document.getElementById("heroTrack");
 let heroIndex = 0;
+
 setInterval(() => {
-  if(heroTrack) {
-    heroIndex = (heroIndex + 1) % heroTrack.children.length;
-    heroTrack.style.transform = `translateX(-${heroIndex * 100}%)`;
-  }
+  if (!heroTrack) return;
+  heroIndex = (heroIndex + 1) % heroTrack.children.length;
+  heroTrack.style.transform = `translateX(-${heroIndex * 100}%)`;
 }, 4000);
 
-let gallIdx = 0;
+/* ================= GALLERY SLIDER ================= */
+const galleryTrack = document.getElementById("galleryTrack");
+let galleryIndex = 0;
+
+function slideGallery(direction) {
+  if (!galleryTrack) return;
+
+  const piece = galleryTrack.children[0];
+  const gap = 15;
+  const pieceWidth = piece.getBoundingClientRect().width + gap;
+
+  galleryIndex += direction;
+
+  if (galleryIndex < 0) {
+    galleryIndex = galleryTrack.children.length - 1;
+  }
+  if (galleryIndex >= galleryTrack.children.length) {
+    galleryIndex = 0;
+  }
+
+  galleryTrack.style.transform = `translateX(-${galleryIndex * pieceWidth}px)`;
+}
+
+/* Mobile auto-slide only */
 setInterval(() => {
   if (window.innerWidth <= 768) {
-    const track = document.getElementById("galleryTrack");
-    if(track) {
-      gallIdx = (gallIdx + 1) % track.children.length;
-      track.style.transform = `translateX(-${gallIdx * 78}vw)`;
-    }
+    slideGallery(1);
   }
 }, 3200);
 
+/* ================= VIDEO SOUND ================= */
 function enableSound() {
   const iframe = document.getElementById("brandVideo");
   const banner = document.getElementById("soundBanner");
+
   iframe.src = "https://www.youtube.com/embed/Ju9aQjM4nio?autoplay=1&mute=0";
-  banner.classList.add("hidden");
+  banner.style.display = "none";
 }
 </script>
 </body>
