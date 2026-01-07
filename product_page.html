@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Products — Studio Grace</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 /* ================= RESET ================= */
@@ -15,21 +15,22 @@
   box-sizing: border-box;
 }
 
-/* ================= ROOT VARIABLES ================= */
+/* ================= VARIABLES ================= */
 :root {
-  --accent-orange: #ff6b00;
+  --accent: #ff6b00;
   --bg-dark: #070707;
+  --soft-white: rgba(255,255,255,0.85);
+  --soft-gray: rgba(255,255,255,0.55);
 }
 
-/* ================= FIXED BACKGROUND SYSTEM ================= */
-/* WHY: Fixed layers prevent gradient snapping when scrolling */
+/* ================= BACKGROUND LAYERS ================= */
 .bg-gradient-layer {
   position: fixed;
   inset: 0;
   background: linear-gradient(
     to bottom,
     #0f172a 0%,
-    #070707 50%,
+    #070707 55%,
     #2b1102 100%
   );
   z-index: -2;
@@ -39,7 +40,7 @@
   position: fixed;
   inset: 0;
   background-image: url("https://www.transparenttextures.com/patterns/carbon-fibre.png");
-  opacity: 0.15;
+  opacity: 0.12;
   pointer-events: none;
   z-index: -1;
 }
@@ -67,22 +68,21 @@ a {
   justify-content: space-between;
   align-items: center;
 
-  /* WHY: subtle separation without hard borders */
   background: rgba(0,0,0,0.35);
   backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(255,107,0,0.2);
+  border-bottom: 1px solid rgba(255,107,0,0.18);
 }
 
 .header h1 {
-  font-size: 0.85rem;
-  font-weight: 300;
-  letter-spacing: 0.4em;
+  font-size: 0.8rem;
+  font-weight: 400;
+  letter-spacing: 0.45em;
   text-transform: uppercase;
 }
 
 /* ================= HERO ================= */
 .products-hero {
-  min-height: 80vh;
+  min-height: 85vh;
   background: url("./Images/leather_background.jpg") center/cover no-repeat;
   position: relative;
 
@@ -92,48 +92,60 @@ a {
   text-align: center;
 }
 
-/* WHY: fade image into page gradient */
 .products-hero::before {
   content: "";
   position: absolute;
   inset: 0;
   background: linear-gradient(
     to bottom,
-    rgba(0,0,0,0.2),
-    transparent,
+    rgba(0,0,0,0.15),
+    transparent 40%,
     rgba(7,7,7,1)
   );
 }
 
 .products-hero-content {
   position: relative;
-  z-index: 1;
+  z-index: 2;
+  max-width: 720px;
 }
 
-/* ================= PRODUCTS SECTION ================= */
+.products-hero h2 {
+  font-size: clamp(3rem, 8vw, 6rem);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.products-hero p {
+  color: var(--soft-gray);
+  font-weight: 300;
+  line-height: 1.8;
+}
+
+/* ================= PRODUCTS ================= */
 .products-section {
-  padding: 6rem 2rem;
+  padding: 7rem 2rem;
   max-width: 1400px;
   margin: 0 auto;
 }
 
-/* 🔑 THIS IS THE KEY FIX */
-/* WHY: Grid controls width & scale on desktop */
+/* GRID = CONTROL */
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 4rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 5rem;
 }
 
 /* ================= PRODUCT CARD ================= */
 .product-card {
-  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-  max-width: 420px;        /* WHY: luxury restraint */
-  margin: 0 auto;          /* centers cards in grid */
+  max-width: 420px;
+  margin: 0 auto;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .product-card:hover {
-  transform: translateY(-10px);
+  transform: translateY(-12px);
 }
 
 .product-card img {
@@ -141,69 +153,80 @@ a {
   aspect-ratio: 4 / 5;
   object-fit: cover;
 
-  border: 1px solid rgba(255,255,255,0.1);
-  filter: grayscale(30%);
-  transition: 0.5s;
+  border: 1px solid rgba(255,255,255,0.08);
+  filter: grayscale(35%) contrast(95%);
+  transition: 0.6s;
 }
 
-/* WHY: hover should feel intentional, not flashy */
 .product-card:hover img {
-  filter: grayscale(0%);
-  border-color: var(--accent-orange);
+  filter: grayscale(0%) contrast(105%);
+  border-color: var(--accent);
 }
 
 /* ================= PRODUCT INFO ================= */
 .product-info {
-  padding: 1.5rem 0;
+  padding: 1.8rem 0 0;
 }
 
 .product-info h3 {
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  letter-spacing: 0.15em;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.6rem;
 }
 
 .product-info p {
-  color: #888;
+  font-size: 0.85rem;
+  color: var(--soft-gray);
   font-weight: 300;
-  margin-bottom: 1.5rem;
+  line-height: 1.8;
+  margin-bottom: 1.8rem;
+}
+
+.product-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .tag {
-  font-size: 0.6rem;
-  padding: 0.4rem 0.8rem;
+  font-size: 0.55rem;
+  padding: 0.45rem 0.9rem;
   border: 1px solid rgba(255,255,255,0.2);
-  letter-spacing: 0.2em;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
 }
 
 .inquire {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   text-transform: uppercase;
-  color: var(--accent-orange);
-  border-bottom: 1px solid var(--accent-orange);
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  border-bottom: 1px solid var(--accent);
 }
 
 /* ================= STATEMENT ================= */
 .products-statement {
-  padding: 8rem 2rem;
+  padding: 9rem 2rem;
   text-align: center;
 }
 
 .products-statement p {
-  max-width: 600px;
+  max-width: 640px;
   margin: 0 auto;
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   line-height: 2;
   font-style: italic;
-  color: #ccc;
+  color: #cfcfcf;
 }
 
 /* ================= FOOTER ================= */
 footer {
   padding: 4rem 2rem;
   text-align: center;
-  font-size: 0.7rem;
-  letter-spacing: 0.3em;
+  font-size: 0.65rem;
+  letter-spacing: 0.35em;
   color: #555;
   text-transform: uppercase;
 }
@@ -212,14 +235,14 @@ footer {
 
 <body>
 
-<!-- BACKGROUND LAYERS -->
+<!-- BACKGROUND -->
 <div class="bg-gradient-layer"></div>
 <div class="bg-texture-layer"></div>
 
 <!-- HEADER -->
 <header class="header">
   <h1>Studio Grace</h1>
-  <a href="index.html" style="padding:.5rem 1.5rem;border:1px solid #fff;border-radius:999px;font-size:.75rem;">
+  <a href="index.html" style="padding:.5rem 1.6rem;border:1px solid #fff;border-radius:999px;font-size:.7rem;">
     Back
   </a>
 </header>
@@ -227,11 +250,10 @@ footer {
 <!-- HERO -->
 <section class="products-hero">
   <div class="products-hero-content">
-    <h2 style="font-size:clamp(3rem,8vw,6rem);letter-spacing:.2em;text-transform:uppercase;">
-      Products
-    </h2>
-    <p style="max-width:500px;margin:0 auto;color:#aaa;font-weight:300;">
-      One-of-one expressions. Designed with intention.
+    <h2>Products</h2>
+    <p>
+      One-of-one garments shaped by restraint, intention, and craft.
+      Each piece exists once — and only once.
     </p>
   </div>
 </section>
@@ -245,9 +267,9 @@ footer {
         <img src="./Images/Whitebackground_Redsweater_Grace.jpg" alt="Custom Denim">
         <div class="product-info">
           <h3>Custom Denim</h3>
-          <p>Hand-altered denim constructed as a one-of-one garment.</p>
-          <div style="display:flex;justify-content:space-between;align-items:center;">
-            <span class="tag">ONE OF ONE</span>
+          <p>Hand-altered denim reconstructed into a singular form.</p>
+          <div class="product-meta">
+            <span class="tag">One of One</span>
             <span class="inquire">Inquire</span>
           </div>
         </div>
@@ -259,36 +281,37 @@ footer {
         <img src="./Images/My Custom.png" alt="Custom Jacket">
         <div class="product-info">
           <h3>Custom Jacket</h3>
-          <p>Individually styled outerwear focused on silhouette.</p>
-          <div style="display:flex;justify-content:space-between;align-items:center;">
-            <span class="tag">CUSTOM</span>
+          <p>Individually composed outerwear focused on silhouette.</p>
+          <div class="product-meta">
+            <span class="tag">Custom</span>
             <span class="inquire">Inquire</span>
           </div>
         </div>
       </article>
-    </a> 
+    </a>
 
     <a href="./Single_Product.html">
       <article class="product-card">
         <img src="./Images/Blue_sweater_grace.png" alt="Sweater Piece">
         <div class="product-info">
           <h3>Sweater Piece</h3>
-          <p>Designed for comfort, movement, and subtle statement.</p>
-          <div style="display:flex;justify-content:space-between;align-items:center;">
-            <span class="tag">ARCHIVE</span>
+          <p>Designed for movement, comfort, and quiet presence.</p>
+          <div class="product-meta">
+            <span class="tag">Archive</span>
             <span class="inquire">Inquire</span>
           </div>
         </div>
       </article>
     </a>
+
   </div>
 </section>
 
 <!-- STATEMENT -->
 <section class="products-statement">
   <p>
-    Studio Grace does not follow trends.<br>
-    Every garment is a singular piece shaped by craft.
+    Studio Grace does not follow seasons or trends.<br>
+    Every garment stands alone — shaped once, worn with meaning.
   </p>
 </section>
 
@@ -298,3 +321,10 @@ footer {
 
 </body>
 </html>
+
+
+
+
+
+
+
