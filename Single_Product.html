@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Studio Grace — Signature Piece</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  font-family:'Inter',sans-serif;
+  background:linear-gradient(to bottom,#000,#0a0a0a);
+  color:#fff;
+}
+
+/* HEADER */
+.header{
+  padding:2rem;
+  text-align:center;
+  border-bottom:1px solid rgba(255,255,255,0.1);
+}
+.header a{
+  color:#fff;
+  text-decoration:none;
+  letter-spacing:.2em;
+  font-weight:700;
+}
+
+/* PRODUCT */
+.product{
+  max-width:1200px;
+  margin:0 auto;
+  padding:5rem 1.5rem;
+  display:grid;
+  gap:4rem;
+}
+
+@media(min-width:900px){
+  .product{grid-template-columns:1fr 1fr;align-items:center}
+}
+
+.product img{
+  width:100%;
+  border-radius:10px;
+}
+
+/* INFO */
+.label{
+  text-transform:uppercase;
+  letter-spacing:.25em;
+  font-size:.75rem;
+  color:#aaa;
+  margin-bottom:1rem;
+}
+
+h1{
+  font-size:2.6rem;
+  font-weight:500;
+  margin-bottom:1rem;
+}
+
+.price{
+  font-size:1.3rem;
+  color:#f5f5f5;
+  margin-bottom:2rem;
+}
+
+.desc{
+  max-width:520px;
+  color:#cfcfcf;
+  line-height:1.9;
+  font-weight:300;
+  margin-bottom:3rem;
+}
+
+/* ACTIONS */
+.actions{
+  display:flex;
+  gap:1rem;
+  flex-wrap:wrap;
+}
+
+.btn{
+  padding:1rem 2.2rem;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,0.25);
+  background:transparent;
+  color:#fff;
+  font-weight:600;
+  text-decoration:none;
+  transition:.25s ease;
+}
+
+.btn.primary{
+  background:#fff;
+  color:#000;
+  border:none;
+}
+
+.btn:hover{transform:translateY(-1px);opacity:.9}
+
+/* FOOT */
+.note{
+  margin-top:3rem;
+  font-size:.75rem;
+  color:#777;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+
+.footer{
+  text-align:center;
+  padding:3rem 1rem;
+  color:#555;
+  border-top:1px solid rgba(255,255,255,0.08);
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">
+  <a href="./index.html">STUDIO GRACE</a>
+</div>
+
+<section class="product">
+
+  <!-- IMAGE -->
+  <div>
+    <img src="./Images/Whitebackground_Redsweater_Grace.jpg" alt="Studio Grace Signature Piece">
+  </div>
+
+  <!-- INFO -->
+  <div>
+    <div class="label">One-of-One Garment</div>
+    <h1>Signature Statement Piece</h1>
+    <div class="price">$1,200 USD</div>
+
+    <p class="desc">
+      Created as a singular expression of form and intention.
+      This piece is produced once — never replicated.
+      Designed for private clients, performers, and individuals
+      who value restraint, presence, and originality.
+    </p>
+
+    <div class="actions">
+      <!-- STRIPE -->
+      <a class="btn primary" href="#">Purchase Securely</a>
+
+      <!-- PAYPAL -->
+      <a class="btn" href="#">Pay with PayPal</a>
+
+      <!-- CUSTOM -->
+      <a class="btn" href="mailto:studio@grace.com">Request Custom</a>
+    </div>
+
+    <div class="note">
+      Handcrafted · No Restocks · Final Sale
+    </div>
+  </div>
+
+</section>
+
+<div class="footer">
+  © Studio Grace
+</div>
+
+</body>
+</html>
